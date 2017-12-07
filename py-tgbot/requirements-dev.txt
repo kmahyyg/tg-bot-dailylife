@@ -1,0 +1,9 @@
+flake8
+pep257
+pylint
+flaky
+yapf
+pre-commit
+beautifulsoup4
+pytest
+pytest-timeout
