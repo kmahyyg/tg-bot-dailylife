@@ -25,10 +25,6 @@ Still in development.
 
 Never use Wechat / QQ.
 
-# License
-
-All my open-source project are licensed under AGPL V3, it never has been changed.
-
 # About us
 
 I'm now a freshman in a university. In the past few years, I use ```@chinanet``` TG BOT which brought me a lot of 
@@ -37,6 +33,9 @@ happiness. We love checking express packages and make jokes on each other.
 However, It stopped working from when I don't know.
 
 I'm trying to practice my programming ability and write this bot to enjoy myself.
+
+All my open-source project are licensed under AGPL V3, it never has been change
+d.
 
 # Thanks
 
