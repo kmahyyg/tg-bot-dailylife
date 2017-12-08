@@ -1,3 +1,6 @@
+![version](https://img.shields.io/badge/version-0.0.1-blue.svg)
+![license](https://img.shields.io/github/license/kmahyyg/life-tg-bot.svg)
+
 # Current Status
 
 In development
