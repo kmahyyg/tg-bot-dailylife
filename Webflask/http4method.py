@@ -22,7 +22,7 @@ def query_records():
         for record in records:
             if record['name'] == name:
                 return jsonify(record)
-        return jsonify({'code': '404', 'data': 'not found'})
+        return jsonify({'code': 404, 'data': 'not found'})
 
 
 @app.route('/', methods=['PUT'])
@@ -39,7 +39,7 @@ def create_record():
 
     with open("data.txt", 'w') as f:
         f.write(json.dumps(records, indent=2))
-    return jsonify({'code': '200', 'uploaded': record})
+    return jsonify({'code': 200, 'uploaded': record})
 
 
 @app.route('/', methods=['POST'])
@@ -57,7 +57,7 @@ def update_record():
 
     with open('data.txt', 'w') as f:
         f.write(json.dumps(new_records, indent=2))
-    return jsonify({'code': '202', 'updated': record})
+    return jsonify({'code': 202, 'updated': record})
 
 
 @app.route('/', methods=['DELETE'])
@@ -75,7 +75,7 @@ def delete_record():
     with open('data.txt', 'w') as f:
         f.write(json.dumps(new_records, indent=2))
 
-    return jsonify({'code': '200', 'deleted': records[0]})
+    return jsonify({'code': 200, 'deleted': records[0]})
 
 
 app.run(debug=True)
