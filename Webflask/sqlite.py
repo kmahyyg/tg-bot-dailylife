@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
+import json
 import sqlite3
 
 from flask import Flask, jsonify, request, g
@@ -39,20 +40,20 @@ def checkout_data():
         return jsonify({'code': '400', 'info': 'Illegal Input!'})
     dbconn = g.db
     dbcur = dbconn.cursor()
-    dbcurexe = dbcur.execute('SELECT * FROM USER')
-    userinfo = dbcurexe.fetchone()
+    dbcurexec = dbcur.execute('SELECT * FROM USER')
+    userinfo = dbcurexec.fetchone()
     while userinfo != None:
         if userinfo[1] == username:
             return jsonify({'code': 200, 'result': userinfo[2]})
         else:
-            userinfo = dbcurexe.fetchone()
+            userinfo = dbcurexec.fetchone()
     return jsonify({'code': '404', 'info': 'Not found'})
 
 
 @app.route('/api/checktel', methods=['DELETE'])
 def delete_data():
-    username = request.args.get('name')
-    if username == None:
+    record = json.loads(request.data)
+    if record == None:
         return jsonify({'code': '400', 'info': 'Illegal Input!'})
     dbconn = g.db
     dbcur = dbconn.cursor()
