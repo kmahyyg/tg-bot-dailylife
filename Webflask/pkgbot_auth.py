@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 
 class Package(db.Model):
     __tablename__ = 'pkglist'
-    pkgid = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    pkgid = db.Column(db.VARCHAR(32), primary_key=True, nullable=False, unique=True)
     pkgstatus = db.Column(db.Integer, nullable=False)
     pkgtrack = db.Column(db.VARCHAR(255))
     tguserid = db.Column(db.VARCHAR(255))
@@ -38,8 +38,9 @@ def callpkgapi():
         msg = json.loads(respA)
         return respA
     companyrep = respA['result']['type']
+    pkgtrack = respA['result']['list'][0]
     pkgstat = respA['result']['deliverystatus']
-    package = Package(pkgid=expno, pkgstatus=pkgstat, pkgtrack=respA['result']['list'][0], tguserid=userid)
+    package = Package(pkgid=expno, pkgstatus=pkgstat, pkgtrack=pkgtrack, tguserid=userid)
     if (pkgstat is not 3):
         if (Package.query.filter_by(pkgid=expno).first() is not None):
             package.pkgtrack = respA['result']['list'][0]
@@ -47,7 +48,7 @@ def callpkgapi():
         else:
             db.session.add(package)
             db.session.commit()
-        return jsonify({'id': expno, 'stat': pkgstat, 'track': package.pkgtrack})
+        return jsonify({'id': expno, 'stat': pkgstat, 'track': pkgtrack})
     else:
         db.session.delete(package)
         return jsonify({'code': 400, 'bmsg': 'The package is already received by user.'})
