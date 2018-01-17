@@ -37,13 +37,12 @@ def callpkgapi():
     if (isinstance(respA, str)):
         msg = json.loads(respA)
         return respA
-    lengthoflist = len(respA['result']['list'])
     companyrep = respA['result']['type']
     pkgstat = respA['result']['deliverystatus']
-    package = Package(pkgid=expno, pkgstatus=pkgstat, pkgtrack=respA['result'][lengthoflist - 1], tguserid=userid)
+    package = Package(pkgid=expno, pkgstatus=pkgstat, pkgtrack=respA['result']['list'][0], tguserid=userid)
     if (pkgstat is not 3):
         if (Package.query.filter_by(pkgid=expno).first() is not None):
-            package.pkgtrack = respA['result'][lengthoflist - 1]
+            package.pkgtrack = respA['result']['list'][0]
             db.session.commit()
         else:
             db.session.add(package)
