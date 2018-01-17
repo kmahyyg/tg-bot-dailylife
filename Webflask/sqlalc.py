@@ -2,11 +2,10 @@
 # -*- encoding: utf-8 -*-
 
 # import modules
-from flask import Flask,request,jsonify
-import json
-from sqlalchemy import create_engine, Metadata
-from sqlalchemy.orm import scoped_session,sessionmaker
+from flask import Flask
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 # flask config
 app = Flask(__name__)
@@ -20,12 +19,14 @@ Base.query = db_session.query_property()
 metadata = Metadata(bind=engine)
 
 # db initialize
-from sqlalchemy import Column,Integer,Varchar,String
+from sqlalchemy import Column, Integer, VARCHAR
+
+
 class User(Base):
     __tablename__ = 'userlist'
     id = Column(Integer,primary_key=True,nullable=False)
-    username = Column(Varchar(255),unique=True)
-    tele = Column(Varchar(255),unique=True)
+    username = Column(VARCHAR(255), unique=True)
+    tele = Column(VARCHAR(255), unique=True)
 
     def __init__(self,username=None,tele=None):
         self.username = username

@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
 #-*- encoding: utf-8 -*-
 
-import requests,json
+import json
 from time import ctime
+
+import requests
+
 from apikey import appcode
 
 host = 'http://jisukdcx.market.alicloudapi.com'
 path = '/express/query'
 FILE = open('apibot.log','w+')
 
-def packagereq(expno):
+
+def packagereq(expno, company='auto'):
     expnO = str(expno)
-    querys = 'number=' + expnO + '&type=auto'
+    company = str(company)
+    querys = 'number=' + expnO + '&type=' + company
     headers = {'User-Agent':'TelegramBOT/v1','Accept': 'application/json','Content-Type': "application/json; charset=UTF-8",'Authorization':appcode}
     url = host + path + '?' + querys
     ruri = requests.get(url=url,headers=headers)
@@ -26,14 +31,14 @@ def packagereq(expno):
     FILE.close()
     if (status == 0):
         return response
-    elif (status == 201 or status == 202):
-        return json.dumps({'code':404,'msg':'NOT FOUND COMPANY OR ID.'})
+    elif (status == 201 or status == 202 or status == 203):
+        return json.dumps({'code': 404, 'bmsg': 'NOT FOUND COMPANY OR ID.'})
     elif (status == 204):
-        return json.dumps({'code':204,'msg':'Cannot auto identify company. use \/exp <id> <company> instead.'})
+        return json.dumps({'code': 204, 'bmsg': 'Cannot auto identify company. use \/exp <id> <company> instead.'})
     elif (status == 205):
-        return json.dumps({'code':205,'msg':'no info'})
+        return json.dumps({'code': 205, 'bmsg': 'no info'})
     else :
-        return json.dumps({'code':400,'msg':'Invalid Request'})
+        return json.dumps({'code': 400, 'bmsg': 'Invalid Request'})
 
 #response['result']['list']
 #response['status']
