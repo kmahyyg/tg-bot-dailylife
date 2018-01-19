@@ -30,7 +30,7 @@ def packagereq(expno, company='auto'):
         FILE.write(e)
     FILE.close()
     if (status == 0):
-        return response
+        return response  # requests.response.json returns a list
     elif (status == 201 or status == 202 or status == 203):
         return json.dumps({'code': 404, 'bmsg': 'NOT FOUND COMPANY OR ID.'})
     elif (status == 204):

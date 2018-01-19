@@ -69,10 +69,16 @@ def callpkgapi():
 @app.route('/api/check2user', methods=['GET'])
 def checkbyuser():
     userid = request.json.get('tgid')
-    usersql = Package.query.filter_by(tguserid=userid).first()
-    # if (usersql is not None):
-    #
-    # else:
-    return jsonify({'code': 404, 'bmsg': 'not found'})
+    usersql = Package.query.filter_by(tguserid=userid).all()
+    pkgall = []
+    if (usersql is not None):
+        leng = len(usersql)
+        for i in range(0, leng):
+            pkg = str(usersql[i])
+            pkgall.append(pkg)
+        return jsonify({'code': 200, 'pkg': pkgall})
+    else:
+        return jsonify({'code': 404, 'bmsg': 'not found'})
 
-# app.run(debug=True)
+
+app.run(debug=True)
