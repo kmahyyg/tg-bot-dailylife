@@ -11,6 +11,7 @@ from aliyun_exp import packagereq
 app = Flask(__name__)
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:3306/sqlalc?charset=utf8mb4'
 db = SQLAlchemy(app)
 
@@ -20,11 +21,22 @@ class Package(db.Model):
     pkgid = db.Column(db.VARCHAR(32), primary_key=True, nullable=False, unique=True)
     pkgstatus = db.Column(db.Integer, nullable=False)
     pkgtrack = db.Column(db.VARCHAR(255))
-    tguserid = db.Column(db.VARCHAR(255))
+    tguserid = db.Column(db.VARCHAR(32))
 
+    def __init__(self, pkgid, pkgstatus, pkgtrack, tguserid):
+        self.pkgid = pkgid
+        self.pkgstatus = pkgstatus
+        self.pkgtrack = pkgtrack
+        self.tguserid = tguserid
+
+    def __repr__(self):
+        result = {'pkgid': self.pkgid, 'pkgstatus': self.pkgstatus, 'pkgtrack': self.pkgtrack,
+                  'tguserid': self.tguserid}
+        return json.dumps(result)
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
+    db.session.commit()
     db.session.remove()
 
 
@@ -58,8 +70,9 @@ def callpkgapi():
 def checkbyuser():
     userid = request.json.get('tgid')
     usersql = Package.query.filter_by(tguserid=userid).first()
-    while (usersql is not None):
-        return jsonify()
+    # if (usersql is not None):
+    #
+    # else:
+    return jsonify({'code': 404, 'bmsg': 'not found'})
 
-
-app.run(debug=True)
+# app.run(debug=True)
