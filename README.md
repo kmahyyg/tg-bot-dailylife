@@ -1,9 +1,9 @@
-![version](https://img.shields.io/badge/version-0.0.1-blue.svg)
+![version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 ![license](https://img.shields.io/github/license/kmahyyg/life-tg-bot.svg)
 
 # Current Status
 
-In development
+Developing...
 
 # Python - TG BOT - YYG
 
@@ -27,13 +27,21 @@ Never use Wechat / QQ.
 
 # License
 
-All my open-source project are licensed under AGPL V3, it never has been change
-d.
+All my open-source project are licensed under AGPL V3, it never has been changed.
 
 # About us
+
+I'm now a freshman in a university. In the past few years, I use ```@chinanet``` TG BOT which brought me a lot of 
+happiness. We love checking express packages and make jokes on each other.
+
+However, It stopped working from when I don't know.
+
+I'm trying to practice my programming ability and write this bot to enjoy myself.
 
 # Thanks
 
 1. https://blog.nfz.moe/archives/how-to-write-beautiful-github-readme.html
 2. https://github.com/python-telegram-bot/python-telegram-bot
 3. http://drakeet.me/create-telegram-bot-with-python/
+4. https://www.stackoverflow.com
+5. https://www.liaoxuefeng.com   Thanks for his tutorials. Very useful for green hands.
