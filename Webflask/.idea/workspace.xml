@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30813bd5-bdb3-4faa-a42c-5b55c203270b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/mailgun_bn.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Helloworld.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RESTfulAPI.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/auth.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front_tgbot.py" afterPath="$PROJECT_DIR$/front_tgbot.py" />
-      <change beforePath="$PROJECT_DIR$/http4method.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/sqlalc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/sqlite.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/mailgun_bn.py" afterPath="$PROJECT_DIR$/mailgun_bn.py" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,11 +40,11 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="apikey.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apikey.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="0">
               <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
               <folding />
             </state>
@@ -61,9 +54,11 @@
       <file leaf-file-name="mailgun_bn.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mailgun_bn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+              <folding>
+                <element signature="e#50#75#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,7 +100,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="SIGN_OFF_COMMIT" value="true" />
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="dev" repo="$PROJECT_DIR$/.." source="dev" />
+      <push-target-info target-remote="gayhub" target-branch="dev" repo="$PROJECT_DIR$/.." source="dev" />
     </push-targets>
   </component>
   <component name="IdeDocumentHistory">
@@ -174,8 +169,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -436,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516542256506</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="collect and archive stuffs.&#10;&#10;Add files.&#10;&#10;#TODO: next feature: mailgun api introduced.">
+      <created>1516604097357</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1516604097357</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -449,7 +451,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3203125" sideWeight="0.49676377" order="7" side_tool="false" content_ui="tabs" x="0" y="11" width="1280" height="738" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325" sideWeight="0.4935275" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.546875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18608414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18932039" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -501,6 +503,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="RESTful API learned." />
     <MESSAGE value="RESTful API learned with 4 HTTP methods." />
     <MESSAGE value="SQL: Add,Modify,Delete,Checkout with SQLite3" />
@@ -515,7 +518,8 @@
     <MESSAGE value="Packagebot: Backend Finished.&#10;&#10; * Flask ReSTful API&#10; * Package Tracker API provided by AliYun&#10; &#10; Next Step: Finish Telegram Frontend to be decided by user." />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="update frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="update frontend" />
+    <MESSAGE value="collect and archive stuffs.&#10;&#10;Add files.&#10;&#10;#TODO: next feature: mailgun api introduced." />
+    <option name="LAST_COMMIT_MESSAGE" value="collect and archive stuffs.&#10;&#10;Add files.&#10;&#10;#TODO: next feature: mailgun api introduced." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -616,17 +620,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/auth.py" />
     <entry file="file://$PROJECT_DIR$/expno.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="68" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="68" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -644,14 +648,6 @@
             <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -679,17 +675,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apikey.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="0">
           <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mailgun_bn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding>
+            <element signature="e#50#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
