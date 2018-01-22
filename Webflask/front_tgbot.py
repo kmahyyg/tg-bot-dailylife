@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
-
 import json, requests, logging
 from apikey import tgbottoken
-from telegram.ext import Updater
+import telegram
+from telegram.ext import Updater, CommandHandler
 from telegram.error import (TelegramError, Unauthorized, BadRequest, TimedOut, ChatMigrated, NetworkError)
 
 # Bot define using class telegram.Bot
-# reqarg = telegram.utils.request.Request(proxy_url='socks5://127.0.0.1:9099')
-# bot = telegram.Bot(token=tgbottoken,request=reqarg)
-
 # Test Environment
+
+reqarg = telegram.utils.request.Request(proxy_url='socks5://127.0.0.1:9099')
+bot = telegram.Bot(token=tgbottoken, request=reqarg)
 updater = Updater(token=tgbottoken, request_kwargs={
     'proxy_url': 'socks5://127.0.0.1:9099/'
 })
 
 # Production Environment
+# bot = telegram.Bot(token=tgbottoken)
 # updater = Updater(token=tgbottoken)
 
 dispatcher = updater.dispatcher
@@ -54,8 +55,29 @@ def error_callback(bot, update, error):
         return json.dumps({'code': 500, 'bmsg': 'server error'})
         # handle all other telegram related errors
 
-
 dispatcher.add_error_handler(error_callback)
 
 # Send message with commands
 # works with requests on flask.
+
+def start(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="Use this bot, use commands listed below.")
+
+
+def sendmsg(bot, update, txt):
+    bot.send_message(chat_id=update.message.chat_id, text=txt)
+
+
+def pkg(bot, update, args):
+    pass  # TODO
+
+
+starthandler = CommandHandler('start', start)
+pkghandler = CommandHandler('exp', pkg, pass_args=True)
+dispatcher.add_handler(starthandler)
+dispatcher.add_handler(pkghandler)
+
+# Start the process
+
+updater.start_polling()
+updater.idle(stop_signals=7)
