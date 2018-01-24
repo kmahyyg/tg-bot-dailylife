@@ -21,6 +21,10 @@ re I could only use Telegram to do most of my life.
 
 Still in development.
 
+## Dependencies
+
+Still in development.
+
 # Personally
 
 Never use Wechat / QQ.
@@ -46,3 +50,21 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 4. https://www.stackoverflow.com
 5. https://www.liaoxuefeng.com   Thanks for his tutorials. Very useful for green hands.
 6. https://github.com/eternnoir/pyTelegramBotAPI
+7. https://github.com/coderfox/Kuaidi100API
+
+# TODO
+
+[X] 1. AliBaba Cloud Package Tracker API Integration
+[X] 2. Package BOT Frontend Authentication
+[X] 3. Use Flask to do a second pack of third-party API
+[X] 4. Communicate with MySQL Server instead of SQLite3
+[ ] 5. Kuaidi100 API Package Tracker API Integration
+[ ] 6. SendGrid API Integration to allow mail send using my .edu.pl domain
+[ ] 7. Turing-Chat API Integration
+
+# Bugs and Issues
+
+[X] SFExpress cannot use Kuaidi100 API.
+
+Others still remain unknown.
+
