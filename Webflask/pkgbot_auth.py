@@ -6,7 +6,7 @@ import json
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
-from aliyun_exp import packagereq
+from aliyunexp_bn import packagereq
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True

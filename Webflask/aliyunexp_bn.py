@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 #-*- encoding: utf-8 -*-
 
+# API Provider: Aliyun (3rd party)
+# API Desc: Check packages from Aliyun
+# API Suggested Target: SFEXP only
+
 import json
 from time import ctime
 

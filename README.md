@@ -41,7 +41,8 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 # Thanks
 
 1. https://blog.nfz.moe/archives/how-to-write-beautiful-github-readme.html
-2. https://github.com/python-telegram-bot/python-telegram-bot
+2. https://github.com/BennyThink/ExpressBot
 3. http://drakeet.me/create-telegram-bot-with-python/
 4. https://www.stackoverflow.com
 5. https://www.liaoxuefeng.com   Thanks for his tutorials. Very useful for green hands.
+6. https://github.com/eternnoir/pyTelegramBotAPI
