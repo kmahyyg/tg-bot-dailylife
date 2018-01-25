@@ -54,17 +54,18 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 
 # TODO
 
-[X] 1. AliBaba Cloud Package Tracker API Integration
-[X] 2. Package BOT Frontend Authentication
-[X] 3. Use Flask to do a second pack of third-party API
-[X] 4. Communicate with MySQL Server instead of SQLite3
-[ ] 5. Kuaidi100 API Package Tracker API Integration
-[ ] 6. SendGrid API Integration to allow mail send using my .edu.pl domain
-[ ] 7. Turing-Chat API Integration
+- [x] | 1. AliBaba Cloud Package Tracker API Integration
+- [x] | 2. Package BOT Frontend Authentication
+- [x] | 3. Use Flask to do a second pack of third-party API
+- [x] | 4. Communicate with MySQL Server instead of SQLite3
+- [ ] | 5. Kuaidi100 API Package Tracker API Integration
+- [ ] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
+
+- [ ] | 7. Turing-Chat API Integration
 
 # Bugs and Issues
 
-[X] SFExpress cannot use Kuaidi100 API.
+- [x] | SFExpress cannot use Kuaidi100 API.
 
 Others still remain unknown.
 
