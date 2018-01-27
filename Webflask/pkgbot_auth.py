@@ -40,7 +40,7 @@ def shutdown_session(exception=None):
     db.session.remove()
 
 
-@app.route('/api/checkexp', methods=['POST'])
+@app.route('/api/aliyun/checkexp', methods=['POST'])
 def callpkgapi():
     expno = request.json.get('express')
     userid = request.json.get('tgid')
@@ -64,6 +64,11 @@ def callpkgapi():
     else:
         db.session.delete(package)
         return jsonify({'code': 400, 'bmsg': 'The package is already received by user.'})
+
+
+@app.route('/api/kd100/checkpkg', methods=['GET'])
+def callkd100():
+
 
 
 @app.route('/api/check2user', methods=['GET'])
