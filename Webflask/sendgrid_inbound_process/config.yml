@@ -1,13 +1,13 @@
 # Incoming Parse endpoint
-endpoint: '/inbound'
+endpoint: '/recvsg'
 
 # Port to listen on
-port: 5000
+port: 8995
 
 # Flask debug mode
 # Set this to False in production
 # Reference: http://flask.pocoo.org/docs/0.11/api/#flask.Flask.run
-debug_mode: True
+debug_mode: False
 
 # List all Incoming Parse fields you would like parsed
 # Reference: https://sendgrid.com/docs/Classroom/Basics/Inbound_Parse_Webhook/setting_up_the_inbound_parse_webhook.html
@@ -31,4 +31,4 @@ keys:
  - email
 
 # URL that the sender will POST to
-host: 'http://127.0.0.1:5000/inbound'
+host: 'http://mail.ynu.edu.pl:8995/recvsg'

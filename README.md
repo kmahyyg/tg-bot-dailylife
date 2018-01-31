@@ -61,10 +61,15 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 - [x] | 5. Kuaidi100 API Package Tracker API Integration
 - [x] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
 
-  <del> [DEPRECATED] | 7. Turing-Chat API Integration </del>
+  <del> [DEPRECATED] | 7. Turing-Chat API Integration [Artificial Fool]</del>
 
   <del> [DEPRECATED] | because No API could be registered now. Welcome PR. </del>
-- [ ] | 8. pyTelegramBotAPI Frontend Interaction [WORKING]
+
+- [X] | 8. SendGrid Inbound Mail Process WebHook. 
+
+- [ ] | 9. pyTelegramBotAPI Frontend Interaction [WORKING]
+
+- [ ] | 10. Chat Messages FLAG Detection and Auto-Reply. ()
 
 # Bugs and Issues
 

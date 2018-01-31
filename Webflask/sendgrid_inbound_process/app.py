@@ -1,6 +1,8 @@
 """Receiver module for processing SendGrid Inbound Parse messages.
 
 See README.txt for usage instructions."""
+import json
+
 try:
     from config import Config
 except:
@@ -13,14 +15,15 @@ except:
     # Python 3+, Travis
     from sendgrid.helpers.inbound.parse import Parse
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import os
 
 app = Flask(__name__)
 config = Config()
-
+STORAGEFILE = open('recvmails.dat', 'w+')
 
 @app.route('/', methods=['GET'])
+@app.route('/recvsg', methods=['GET'])
 def index():
     """Show index page to confirm that server is running."""
     return render_template('index.html')
@@ -28,13 +31,16 @@ def index():
 
 @app.route(config.endpoint, methods=['POST'])
 def inbound_parse():
-    """Process POST from Inbound Parse and print received data."""
+    """Process POST from Inbound Parse and save received data."""
     parse = Parse(config, request)
     # Sample proccessing action
-    print(parse.key_values())
+    updata = parse.key_values()
+    saveddata = json.dumps(updata)
+    STORAGEFILE.write(saveddata)
+    STORAGEFILE.close()
     # Tell SendGrid's Inbound Parse to stop sending POSTs
     # Everything is 200 OK :)
-    return "OK"
+    return jsonify({'status': 200, 'bmsg': 'OK'})
 
 
 if __name__ == '__main__':

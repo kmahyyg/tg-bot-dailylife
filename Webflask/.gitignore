@@ -117,3 +117,7 @@ venv.bak/
 .mypy_cache/
 /apikey.py
 /test.db
+/sendgrid_inbound_process/config.yml
+/sendgrid_inbound_process/recvmails.dat
+static/
+templates/
