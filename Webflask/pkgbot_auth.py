@@ -7,6 +7,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 from aliyunexp_bn import packagereq
+from kd100_bn import checkcmpy,ckkd100pkg
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
@@ -68,8 +69,15 @@ def callpkgapi():
 
 @app.route('/api/kd100/checkpkg', methods=['GET'])
 def callkd100():
-
-
+    pkgid = request.args.get('pkgid')
+	cpny = checkcmpy(pkgid)
+	if cpny == 500:
+		return jsonify({'status':500, 'bmsg':'Cannot auto detect the proper company.'})
+	elif cpny == 'shunfeng':
+		return jsonify({'status':302, 'bmsg':'ShunFeng Express doesn\'t support this method. use \/sfpkg to solve this problem.'})
+	else:
+		lastresult = ckkd100pkg(pkgid,cpny)
+		return jsonify({'status':200, 'pkgtrack': lastresult})
 
 @app.route('/api/check2user', methods=['GET'])
 def checkbyuser():

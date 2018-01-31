@@ -29,8 +29,21 @@ def checkcmpy(expn):
     try:
         company = resp['auto'][0]['comCode']
     except IndexError:
-        return json.dumps({'status': 404, 'pkgid': query, 'bmsg': 'Package\'s Company cannot be detected.'})
+        result = 500
+        return result
     return company
 
 
-def
+def ckkd100pkg(expno,cpny):
+	base = 'http://www.kuaidi100.com/query?type='
+	query = str(cpny) + '&postid=' + str(expno)
+	url = base + query
+	req = requests.get(url=url)
+	resp = req.json()
+	if  (resp['status'] != 200):
+		return json.dumps({'status': 400, 'pkgid': expno, 'bmsg': 'Invalid Request.'})
+	else:
+		latest = resp['data'][0]['context']
+		return latest
+	
+	

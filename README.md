@@ -58,10 +58,13 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 - [x] | 2. Package BOT Frontend Authentication
 - [x] | 3. Use Flask to do a second pack of third-party API
 - [x] | 4. Communicate with MySQL Server instead of SQLite3
-- [ ] | 5. Kuaidi100 API Package Tracker API Integration
-- [ ] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
+- [x] | 5. Kuaidi100 API Package Tracker API Integration
+- [x] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
 
-- [ ] | 7. Turing-Chat API Integration
+  <del> [DEPRECATED] | 7. Turing-Chat API Integration </del>
+
+  <del> [DEPRECATED] | because No API could be registered now. Welcome PR. </del>
+- [ ] | 8. pyTelegramBotAPI Frontend Interaction [WORKING]
 
 # Bugs and Issues
 
