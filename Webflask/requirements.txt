@@ -18,6 +18,7 @@ python-magic==0.4.15
 python-magic-win64==0.4.13
 requests==2.18.4
 sendgrid==5.3.0
+simplejson==3.13.2
 six==1.11.0
 SQLAlchemy==1.2.0
 urllib3==1.22

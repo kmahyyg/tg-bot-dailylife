@@ -46,4 +46,3 @@ def ckkd100pkg(expno,cpny):
 		latest = resp['data'][0]['context']
 		return latest
 	
-	
