@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 from aliyunexp_bn import packagereq
-from kd100_bn import checkcmpy, ckkd100pkg
+from ymodules.kd100_bn import checkcmpy, ckkd100pkg
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True

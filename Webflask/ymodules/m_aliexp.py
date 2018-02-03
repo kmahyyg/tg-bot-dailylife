@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 #-*- encoding: utf-8 -*-
 
+#!/usr/bin/env python3
+#-*- encoding: utf-8 -*-
+
 # API Provider: Aliyun (3rd party)
 # API Desc: Check packages from Aliyun
 # API Suggested Target: SFEXP only
@@ -43,6 +46,8 @@ def packagereq(expno, company='auto'):
         return json.dumps({'code': 205, 'bmsg': 'no info'})
     else :
         return json.dumps({'code': 400, 'bmsg': 'Invalid Request'})
+
+
 
 #response['result']['list']
 #response['status']

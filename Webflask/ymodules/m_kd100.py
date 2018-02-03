@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#-*- encoding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 
 # 3rd party API : KD100
 # http://www.kuaidi100.com/autonumber/autoComNum?resultv2=1&text= <EXP CODE>  [POST]
@@ -13,8 +13,11 @@
 
 # kd100_company.json http://www.kuaidi100.com/js/share/company.js
 
-import requests, sys, json
-from modules_logger import logger
+import json
+import requests
+import sys
+
+from ymodules.m_logger import logger
 
 sys.stdout = logger
 sys.stderr = logger
@@ -34,15 +37,14 @@ def checkcmpy(expn):
     return company
 
 
-def ckkd100pkg(expno,cpny):
-	base = 'http://www.kuaidi100.com/query?type='
-	query = str(cpny) + '&postid=' + str(expno)
-	url = base + query
-	req = requests.get(url=url)
-	resp = req.json()
-	if  (resp['status'] != 200):
-		return json.dumps({'status': 400, 'pkgid': expno, 'bmsg': 'Invalid Request.'})
-	else:
-		latest = resp['data'][0]['context']
-		return latest
-	
+def ckkd100pkg(expno, cpny):
+    base = 'http://www.kuaidi100.com/query?type='
+    query = str(cpny) + '&postid=' + str(expno)
+    url = base + query
+    req = requests.get(url=url)
+    resp = req.json()
+    if (resp['status'] != 200):
+        return json.dumps({'status': 400, 'pkgid': expno, 'bmsg': 'Invalid Request.'})
+    else:
+        latest = resp['data'][0]['context']
+        return latest
