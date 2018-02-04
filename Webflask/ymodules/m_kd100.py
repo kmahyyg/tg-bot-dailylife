@@ -13,14 +13,7 @@
 
 # kd100_company.json http://www.kuaidi100.com/js/share/company.js
 
-import json
 import requests
-import sys
-
-from ymodules.m_logger import logger
-
-sys.stdout = logger
-sys.stderr = logger
 
 
 def checkcmpy(expn):
@@ -43,8 +36,9 @@ def ckkd100pkg(expno, cpny):
     url = base + query
     req = requests.get(url=url)
     resp = req.json()
-    if (resp['status'] != 200):
-        return json.dumps({'status': 400, 'pkgid': expno, 'bmsg': 'Invalid Request.'})
+    if (resp['status'] != '200'):
+        failed = 400
+        return failed
     else:
         latest = resp['data'][0]['context']
         return latest
