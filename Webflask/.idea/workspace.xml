@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30813bd5-bdb3-4faa-a42c-5b55c203270b" name="Default" comment="Temporarily save the work progress.">
+    <list default="true" id="30813bd5-bdb3-4faa-a42c-5b55c203270b" name="Default" comment="Function 1: Package Tracker goes online.&#10;&#10;Signed-off-by: Patrick Young &lt;16604643+kmahyyg@users.noreply.github.com&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tgbot_fnA.py" afterPath="$PROJECT_DIR$/tgbot_fnA.py" />
-      <change beforePath="$PROJECT_DIR$/ymodules/m_aliexp.py" afterPath="$PROJECT_DIR$/ymodules/m_aliexp.py" />
-      <change beforePath="$PROJECT_DIR$/ymodules/m_kd100.py" afterPath="$PROJECT_DIR$/ymodules/m_kd100.py" />
-      <change beforePath="$PROJECT_DIR$/ymodules/m_logger.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +17,7 @@
     <SUITE FILE_PATH="coverage/Webflask$http4method.coverage" NAME="http4method Coverage Results" MODIFIED="1515736031193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Webflask$auth.coverage" NAME="auth Coverage Results" MODIFIED="1516185451717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Webflask$tgbot_fn.coverage" NAME="tgbot_fn Coverage Results" MODIFIED="1517601882939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Webflask$tgbot_fnA.coverage" NAME="tgbot_fnA Coverage Results" MODIFIED="1517735636445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Webflask$tgbot_fnA.coverage" NAME="tgbot_fnA Coverage Results" MODIFIED="1517736145876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Webflask$Webflask.coverage" NAME="Webflask Coverage Results" MODIFIED="1515425394114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Webflask$pkgbot_auth.coverage" NAME="pkgbot_auth Coverage Results" MODIFIED="1517404679772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Webflask$RESTfulAPI.coverage" NAME="RESTfulAPI Coverage Results" MODIFIED="1515725286291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -47,7 +43,20 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="tgbot_fnA.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tgbot_fnA.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="e#49#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -90,7 +99,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="SIGN_OFF_COMMIT" value="true" />
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="dev" repo="$PROJECT_DIR$/.." source="dev" />
+      <push-target-info target-remote="gayhub" target-branch="dev" repo="$PROJECT_DIR$/.." source="dev" />
     </push-targets>
   </component>
   <component name="IdeDocumentHistory">
@@ -545,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517602577869</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Function 1: Package Tracker goes online.">
+      <created>1517735868354</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1517735868354</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -610,7 +626,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="RESTful API learned." />
     <MESSAGE value="RESTful API learned with 4 HTTP methods." />
     <MESSAGE value="SQL: Add,Modify,Delete,Checkout with SQLite3" />
     <MESSAGE value="SQL: Add,Modify,Delete,Checkout with SQLite3&#10;&#10;Signed-off-by: Patrick Young &lt;16604643+kmahyyg@users.noreply.github.com&gt;" />
@@ -635,7 +650,8 @@
     <MESSAGE value="Check out all of the official references and download official parser.&#10;&#10;Parser is written in Python with Flask micro-framework.&#10;&#10;Temporarily save the work progress." />
     <MESSAGE value="Temporarily save the work progress.&#10;&#10;Modified and make the inbound mail webhook worked." />
     <MESSAGE value="Temporarily save the work progress." />
-    <option name="LAST_COMMIT_MESSAGE" value="Temporarily save the work progress." />
+    <MESSAGE value="Function 1: Package Tracker goes online." />
+    <option name="LAST_COMMIT_MESSAGE" value="Function 1: Package Tracker goes online." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -851,7 +867,7 @@
         <state relative-caret-position="48">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="e#159#170#0" expanded="true" />
+            <element signature="e#159#170#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -874,8 +890,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tgbot_fnA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="46" column="54" lean-forward="true" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+        <state relative-caret-position="264">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="e#49#63#0" expanded="true" />
           </folding>

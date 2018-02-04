@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![version](https://img.shields.io/badge/version-0.2.0-blue.svg)
 ![license](https://img.shields.io/github/license/kmahyyg/life-tg-bot.svg)
 
 # Current Status
@@ -67,9 +67,9 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 
 - [X] | 8. SendGrid Inbound Mail Process WebHook. 
 
-- [ ] | 9. pyTelegramBotAPI Frontend Interaction [WORKING]
+[PARTIALLY FINISHED ] | 9. pyTelegramBotAPI Frontend Interaction [WORKING]
 
-- [ ] | 10. Chat Messages FLAG Detection and Auto-Reply. ()
+[TBD] | 10. Chat Messages FLAG Detection and Auto-Reply. (Will be done in the future)
 
 # Bugs and Issues
 
