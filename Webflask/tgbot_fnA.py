@@ -2,6 +2,7 @@
 #-*- encoding: utf-8 -*-
 
 import telebot
+from telebot import types
 from apikey import tgbottoken, authedchat
 from ymodules.m_kd100 import *
 from ymodules.m_aliexp import packagereq
@@ -51,6 +52,13 @@ def cmd_express(msg):
             bot.reply_to(msg, "Illegal Input")
     else:
         pass
+
+
+@bot.message_handler(commands=['newmail'])
+def mailwithsg(msg):
+    cid = msg.chat.id
+    mkup = types.ReplyKeyboardRemove(selective=False)
+    bot.send_message(cid, "Send me some text", reply_markup=mkup)
 
 
 bot.polling()

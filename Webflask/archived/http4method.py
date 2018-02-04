@@ -8,6 +8,10 @@ from flask import Flask, jsonify, request
 # curl -H 'Content-Type: application/json' -X POST/DELETE/PUT/GET -d '{"name":"yyg2","tel":"111211"}'
 # http://127.0.0.1:5000
 
+# app.run(host=WEBHOOK_LISTEN,
+#         port=WEBHOOK_PORT,
+#         ssl_context=(WEBHOOK_SSL_CERT PATH, WEBHOOK_SSL_PRIV PATH),
+#         debug=True)
 
 app = Flask(__name__)
 
