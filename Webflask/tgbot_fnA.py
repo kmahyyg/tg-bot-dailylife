@@ -30,7 +30,7 @@ def cmd_expcmpy(msg):
 @bot.message_handler(commands=['express'])
 def cmd_express(msg):
     msgid = msg.chat.id
-    if (msgid == authedchat):
+    if (msgid in authedchat):
         exparg = extract_arg(msg.text)
         # indexerror, import types from telebot
         # except Exception as e: bot.reply_to(message,e)
@@ -65,7 +65,7 @@ def mailwithsg(msg):
 @bot.message_handler(commands=['ipip'])
 def geoipinfo(msg):
     cid = msg.chat.id
-    if (cid == authedchat):
+    if (cid in authedchat):
         ipaddr = extract_arg(msg.text)
         if (ipaddr == []):
             bot.reply_to(msg, "Illegal Input.")
