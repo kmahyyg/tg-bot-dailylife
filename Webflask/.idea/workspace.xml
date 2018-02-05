@@ -49,9 +49,11 @@
       <file leaf-file-name="tgbot_fnA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tgbot_fnA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="15" selection-end-line="67" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="504">
+              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding>
+                <element signature="e#49#72#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,7 +102,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="SIGN_OFF_COMMIT" value="true" />
     <push-targets>
-      <push-target-info target-remote="gayhub" target-branch="dev" repo="$PROJECT_DIR$/.." source="dev" />
+      <push-target-info target-remote="origin" target-branch="dev" repo="$PROJECT_DIR$/.." source="dev" />
     </push-targets>
   </component>
   <component name="IdeDocumentHistory">
@@ -137,14 +139,14 @@
         <option value="$PROJECT_DIR$/ymodules/aliexp.py" />
         <option value="$PROJECT_DIR$/kd100_bn.py" />
         <option value="$PROJECT_DIR$/sendgrid_bn.py" />
-        <option value="$PROJECT_DIR$/apikey.py" />
         <option value="$PROJECT_DIR$/ymodules/m_kd100.py" />
         <option value="$PROJECT_DIR$/ymodules/m_aliexp.py" />
         <option value="$PROJECT_DIR$/archived/http4method.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/ymodules/m_ipip.py" />
-        <option value="$PROJECT_DIR$/tgbot_fnA.py" />
         <option value="$PROJECT_DIR$/ymodules/apikey.py" />
+        <option value="$PROJECT_DIR$/apikey.py" />
+        <option value="$PROJECT_DIR$/tgbot_fnA.py" />
       </list>
     </option>
   </component>
@@ -154,7 +156,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="398" />
     <option name="width" value="1296" />
     <option name="height" value="776" />
@@ -583,15 +585,22 @@
       <option name="project" value="LOCAL" />
       <updated>1517845926349</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="update bot chat authentication">
+      <created>1517847447118</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1517847447118</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
+    <frame x="398" y="0" width="1296" height="776" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.325" sideWeight="0.50970876" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325" sideWeight="0.50970876" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.315625" sideWeight="0.49676377" order="8" side_tool="false" content_ui="tabs" x="0" y="11" width="1280" height="738" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325" sideWeight="0.49029127" order="2" side_tool="false" content_ui="tabs" />
@@ -649,7 +658,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="SQL: Add,Modify,Delete,Checkout with SQLite3&#10;&#10;Signed-off-by: Patrick Young &lt;16604643+kmahyyg@users.noreply.github.com&gt;" />
     <MESSAGE value="Update all files json - response code from str to int" />
     <MESSAGE value="SQLite3 - Add,Modify,Checkout,Delete Done!&#10;&#10;Signed-off-by: Patrick Young &lt;16604643+kmahyyg@users.noreply.github.com&gt;" />
     <MESSAGE value="SQLite3 - Add, Modify, Delete, Checkout DONE!&#10;&#10;Signed-off-by: Patrick Young &lt;16604643+kmahyyg@users.noreply.github.com&gt;" />
@@ -674,7 +682,8 @@
     <MESSAGE value="Function 1: Package Tracker goes online." />
     <MESSAGE value="Write a lot of shit.&#10;&#10;Signed-off-by: Patrick Young &lt;16604643+kmahyyg@users.noreply.github.com&gt;" />
     <MESSAGE value="Add feature: ip.sb API to fetch GEOIP info." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add feature: ip.sb API to fetch GEOIP info." />
+    <MESSAGE value="update bot chat authentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="update bot chat authentication" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -891,14 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apikey.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ymodules/m_kd100.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="839">
@@ -946,6 +947,14 @@
     <entry file="file://$PROJECT_DIR$/ymodules/apikey.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apikey.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
           <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
           <folding />
         </state>
@@ -953,9 +962,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tgbot_fnA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="15" selection-end-line="67" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="504">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="e#49#72#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #-*- encoding: utf-8 -*-
 
-import telebot
+import telebot, requests
 from telebot import types
 from apikey import tgbottoken, authedchat
 from ymodules.m_kd100 import *
@@ -75,5 +75,16 @@ def geoipinfo(msg):
     else:
         pass
 
+
+@bot.message_handler(content_types=['document'])
+def handle_file(msg):
+    cid = msg.chat.id
+    if (cid in authedchat):
+        with open('tmpdwnld.tmp', 'wb') as newtmp:
+            file_info = bot.get_file(msg.document.file_id)
+            downloaded_file = bot.download_file(file_info.file_path)
+            newtmp.write(downloaded_file)
+    else:
+        pass
 
 bot.polling(none_stop=True)
