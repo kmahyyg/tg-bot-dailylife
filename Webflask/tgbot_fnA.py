@@ -6,6 +6,7 @@ from telebot import types
 from apikey import tgbottoken, authedchat
 from ymodules.m_kd100 import *
 from ymodules.m_aliexp import packagereq
+from ymodules.m_ipip import ipsbgeo
 bot = telebot.TeleBot(tgbottoken)
 
 # Test Environment with GFW Involved
@@ -61,4 +62,18 @@ def mailwithsg(msg):
     bot.send_message(cid, "Send me some text", reply_markup=mkup)
 
 
-bot.polling()
+@bot.message_handler(commands=['ipip'])
+def geoipinfo(msg):
+    cid = msg.chat.id
+    if (cid == authedchat):
+        ipaddr = extract_arg(msg.text)
+        if (ipaddr == []):
+            bot.reply_to(msg, "Illegal Input.")
+        else:
+            repy = ipsbgeo(ipaddr)
+            bot.send_message(cid, repy)
+    else:
+        pass
+
+
+bot.polling(none_stop=True)
