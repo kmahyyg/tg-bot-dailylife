@@ -19,15 +19,17 @@ re I could only use Telegram to do most of my life.
 
 # Download and Deploy
 
-Still in development.
+Still in development. Git Clone and install dependencies. Then run tgbot_fnA.py
+
+More details and improvements will be introduced in the future.
 
 ## Dependencies
 
-Still in development.
+See more details in requirements.txt
 
 # Personally
 
-Never use Wechat / QQ.
+Never use Wechat / QQ. Telegram me.
 
 # License
 
@@ -51,6 +53,8 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 5. https://www.liaoxuefeng.com   Thanks for his tutorials. Very useful for green hands.
 6. https://github.com/eternnoir/pyTelegramBotAPI
 7. https://github.com/coderfox/Kuaidi100API
+8. http://www.bennythink.com
+9. https://fast.v2ex.com/member/showfom  and his https://ip.sb https://sm.ms https://u.nu
 
 # TODO
 
@@ -70,6 +74,8 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 [PARTIALLY FINISHED ] | 9. pyTelegramBotAPI Frontend Interaction [WORKING]
 
 [TBD] | 10. Chat Messages FLAG Detection and Auto-Reply. (Will be done in the future)
+
+- [X] | 11. Use ``` https://ip.sb ``` API to get GEOIP info.
 
 # Bugs and Issues
 

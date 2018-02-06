@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="250574b3-b080-4033-bd90-2b8f594af81c" name="gce-tg-bot" url="http://104.199.180.157">
+        <fileTransfer host="104.199.180.157" port="2226" privateKey="C:\Users\Administrator\.ssh\id_rsa" rootFolder="/home/kmahyygyyg/tg-tb-packagebot" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="2226" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
