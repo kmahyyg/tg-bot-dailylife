@@ -3,8 +3,8 @@
 
 import base64
 import json
+
 import magic
-import os
 import sendgrid
 from sendgrid.helpers.mail import *
 
@@ -15,11 +15,12 @@ from apikey import sgridkey
 # according to SendGrid tutorial,  Whole requests should not exceed 20M
 # it strongly suggests that 7M is the biggest size of attachments.
 
-def detectsize(filedir):
-    orisize = os.path.getsize(filedir)
-    realsize = orisize / 1024 / 1024
-    return realsize
-
+# def detectsize(filedir):
+#     orisize = os.path.getsize(filedir)
+#     realsize = orisize / 1024 / 1024
+#     return realsize
+#
+# Already proceeded in frontend
 
 # cuz libmagic doesn't exist in Windows Platform
 # if you need it to be running on Win
@@ -62,9 +63,9 @@ def sendmail(mailjson):
         attach.set_disposition("attachment")
         attach.set_content_id(255)
         mailconstruct.add_attachment(attach)
-    response = sg.client.mail.send.post(request_body=mail.post())
-    rep = {}
-    rep['code'] = response.status_code
-    rep['bmsg'] = response.body
-    rep['head'] = response.headers
-    return rep
+    # response = sg.client.mail.send.post(request_body=mail.post())   TODO: ERROR
+    # rep = {}
+    # rep['code'] = response.status_code
+    # rep['bmsg'] = response.body
+    # rep['head'] = response.headers
+    # return rep

@@ -119,6 +119,7 @@ venv.bak/
 /test.db
 /sendgrid_inbound_process/config.yml
 /sendgrid_inbound_process/recvmails.dat
+.idea/webServers.xml
 static/
 templates/
 ymodules/apikey.py
