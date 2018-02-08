@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
-import logging
-
 import telebot
 
 from apikey import tgbottoken, authedchat
@@ -15,7 +13,9 @@ from ymodules.m_tuling123 import *
 # define bot instance
 
 bot = telebot.TeleBot(tgbottoken)
-telebot.logger.setLevel(logging.INFO)
+
+
+# telebot.logger.setLevel(logging.INFO)
 
 
 # Test Environment with GFW Involved, fuck CCP
@@ -96,7 +96,7 @@ hasattachment = False
 @bot.message_handler(content_types=['document'])
 def handle_file(msg):
     cid = msg.chat.id
-    if (cid in authedchat):
+    if (cid == authedchat[0]):
         bot.send_chat_action(cid, 'typing')
         file_info = bot.get_file(msg.document.file_id)
         file_size = msg.document.file_size
@@ -116,21 +116,20 @@ def handle_file(msg):
         pass
 
 
+# handle new mail request with my sendgrid api, xxx.edu.pl
+@bot.message_handler(commands=['sendmail'])
+def mailwithsg(msg):
+    return None
+
+
 # tuling123 chat API introduced, proceed all text message
 @bot.message_handler(content_types=['text'])
 def chattuling(msg):
     cid = msg.chat.id
     text = msg.text
+    bot.send_chat_action(cid, 'typing')
     rpy = send_turing(text, cid)
     bot.reply_to(msg, rpy)
-
-
-# handle new mail request with my sendgrid api, xxx.edu.pl
-@bot.message_handler(commands=['writemail'])
-def mailsend(msg):
-    cid = msg.chat.id
-    bot.send_chat_action(cid, 'typing')
-
 
 # polling updates, ignore errors to be focused on running
 bot.polling(none_stop=True)
