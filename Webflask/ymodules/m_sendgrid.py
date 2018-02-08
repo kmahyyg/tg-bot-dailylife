@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
-import magic
-import sendgrid
-
+from base64 import b64encode
+# import magic
+from sendgrid import *
+from sendgrid.helpers.mail import *
 from apikey import sgridkey
 
 
@@ -24,12 +25,29 @@ from apikey import sgridkey
 # https://github.com/axnsan12/python-magic-win64
 # from winmagic import magic
 # Here I just need it to be running on Linux. #
+#
+# def getmime(file):
+#     mime = magic.Magic(mime=True)
+#     mimetp = mime.from_file(file)
+#     return mimetp
 
-def getmime(file):
-    mime = magic.Magic(mime=True)
-    mimetp = mime.from_file(file)
-    return mimetp
+def build_atth(filename, filemime, filedir='/tmp'):
+    attach = Attachment()
+    file = filedir + filename
+    with open(file, "rb") as f1:
+        dataattc = f1.read()
+        f1.close()
+    encoded = b64encode(dataattc)
+    attach.content = encoded
+    attach.type = filemime
+    attach.disposition = "attachment"
+    attach.content_id = "201"
+    return attach
 
 
-def sendmail(mailjson):
+def sendmail_withatth(mail_details, attach):
     sg = sendgrid.SendGridAPIClient(apikey=sgridkey)
+    mail = Mail()
+
+
+def sendmail_noatth(mail_details):

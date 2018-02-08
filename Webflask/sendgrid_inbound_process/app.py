@@ -20,7 +20,9 @@ import os
 
 app = Flask(__name__)
 config = Config()
-STORAGEFILE = open('recvmails.dat', 'w+')
+YYGFile = open('/tmp/recvmails_yyg.dat', 'w+')
+ECSFile = open('/tmp/recvmails_ecs.dat', 'w+')
+SpamFile = open('/tmp/recvmails_idk.dat', 'w+')
 
 @app.route('/', methods=['GET'])
 @app.route('/recvsg', methods=['GET'])
@@ -35,11 +37,21 @@ def inbound_parse():
     parse = Parse(config, request)
     # Sample proccessing action
     updata = parse.key_values()
-    saveddata = json.dumps(updata)
-    STORAGEFILE.write(saveddata)
-    STORAGEFILE.close()
+    if ("kmahyyg" in updata['to']):
+        yygdata = json.dumps(updata)
+        YYGFile.write(yygdata)
+        YYGFile.close()
+    elif ("ecswvern" in updata['to']):
+        ecsdata = json.dumps(updata)
+        ECSFile.write(ecsdata)
+        ECSFile.close()
+    else:
+        spamdata = json.dumps(updata)
+        SpamFile.write(spamdata)
+        SpamFile.close()
     # Tell SendGrid's Inbound Parse to stop sending POSTs
     # Everything is 200 OK :)
+    # Now send the corresponding file to each chat id
     return jsonify({'status': 200, 'bmsg': 'OK'})
 
 
