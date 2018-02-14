@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
-import telebot
 import time
+
+import telebot
 from telebot import types
+
 from apikey import tgbottoken, authedchat
 from ymodules.m_aliexp import packagereq
 from ymodules.m_ipip import ipsbgeo
@@ -13,10 +15,14 @@ from ymodules.m_tuling123 import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
+YYGFile = open('/tmp/recvmails_yyg.dat', 'rb')
+ECSFile = open('/tmp/recvmails_ecs.dat', 'rb')
+SpamFile = open('/tmp/recvmails_idk.dat', 'rb')
+
 # telebot.logger.setLevel(logging.INFO)
 
 # Test Environment with GFW Involved, fuck CCP
-# telebot.apihelper.proxy = {'https': 'http://127.0.0.1:9099'}
+# telebot.apihelper.proxy = {'https': 'http://127.0.0.1:1085'}
 
 # separate arguments into list to handle with msg text
 def extract_arg(arg):
@@ -73,7 +79,8 @@ def cmd_express(msg):
 def geoipinfo(msg):
     cid = msg.chat.id
     if (cid in authedchat):
-        ipaddr = extract_arg(msg.text)
+        ipaddrlst = extract_arg(msg.text)
+        ipaddr = ipaddrlst[0]
         if (ipaddr == []):
             bot.reply_to(msg, "Illegal Input.")
         else:
@@ -89,6 +96,7 @@ def geoipinfo(msg):
 file_name = " "
 file_mime = " "
 mail_details = {}
+
 
 @bot.message_handler(content_types=['document'])
 def handle_file(msg):
@@ -114,8 +122,10 @@ def handle_file(msg):
 
 
 msginitid = 0
+
+
 # handle new mail request with my sendgrid api, xxx.edu.pl
-# data stru: mail_details = {to,subject,plaintext,atth,atthname,atthmime}
+# data stru: mail_details = {from,to,subject,plaintext,atth,atthname,atthmime}
 @bot.message_handler(commands=['sendmail'])
 @bot.message_handler(func=lambda msg: ("mail_" in msg.text), content_types=['text'])  # index start from 0 to split
 def mailwithsg(msg):
@@ -123,18 +133,21 @@ def mailwithsg(msg):
     if (cid in authedchat):
         bot.send_chat_action(cid, 'typing')
         mkup = types.ForceReply(selective=False)
-        sendto = bot.send_message(cid, "Send to? reply must start with mail_to:", reply_markup=mkup)
-        msginitid = sendto.message_id
+        frommail = bot.send_message(cid, 'From which account? Fill in your username', reply_markup=mkup)
+        msginitid = frommail.message_id
         if (msg.message_id == msginitid + 1):
+            mail_details['from'] = str(msg.text) + str("@ynu.edu.pl")
+            sendto = bot.send_message(cid, "Send to? reply must start with mail_to:", reply_markup=mkup)
+        elif (msg.message_id == msginitid + 3):
             mail_details['to'] = (msg.text)
             mailsub = bot.send_message(cid, "Subject? reply must start with mail_subject:", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 3):
+        elif (msg.message_id == msginitid + 5):
             mail_details['subject'] = (msg.text)
             mailcontent = bot.send_message(cid, "Content? reply must start with mail_cont:", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 5):
+        elif (msg.message_id == msginitid + 7):
             mail_details['plaintext'] = (msg.text)
             mailattach = bot.send_message(cid, "Do you have attachment? Y/N ", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 7):
+        elif (msg.message_id == msginitid + 9):
             if msg.text == 'Y':
                 bot.send_message(cid, "Please send your attachment (1 File Only, must <7MiB)")
                 time.sleep(30)
@@ -156,6 +169,7 @@ def finalsend(msg):
     if cid in authedchat:
         from time import sleep
         bot.send_chat_action(cid, 'typing')
+        bot.send_message(cid, "From:" + mail_details['from'] + '\n')
         bot.send_message(cid, "To:" + mail_details['to'] + '\n')
         bot.send_message(cid, "Subject:" + mail_details['subject'] + '\n')
         bot.send_message(cid, "Content:" + mail_details['plaintext'] + '\n')
@@ -164,17 +178,21 @@ def finalsend(msg):
         bot.send_message(cid, "You send the mail with above datas." + '\n')
         bot.send_chat_action(cid, 'typing')
         sleep(5)
-        # TODO SENDGRID_WITHOUT_ATTACH
-        # TODO SENDGRID_WITH_ATTACH
         if (mail_details['atth'] == True):
             att1 = build_atth(mail_details['file_name'], mail_details['file_mime'])
-            sendmail_withatth(mail_details, att1)
+            sgmail = buildmail_withatth(mail_details, att1)
+            sgsent = sendmail_atth(sgmail)
+            bot.send_chat_action(cid, 'typing')
+            bot.send_message(cid, sgsent)
             bot.send_message(cid, "Successfully sent!")
         if (mail_details['atth'] == False):
-            sendmail_noatth(mail_details)
+            sgresp = sendmail_noatth(mail_details)
+            bot.send_chat_action(cid, 'typing')
+            bot.send_message(cid, sgresp)
             bot.send_message(cid, "Successfully sent!")
     else:
         pass
+
 
 # tuling123 chat API introduced, proceed all text message
 @bot.message_handler(content_types=['text'])
@@ -187,6 +205,21 @@ def chattuling(msg):
         bot.reply_to(msg, rpy)
     else:
         pass
+
+
+@bot.message_handler(commands=['recvmail'])
+def recvmail(msg):
+    cid = msg.chat.id
+    if (cid == authedchat[0]):
+        bot.send_message(cid, 'Requested, Searching...')
+        bot.send_chat_action(cid, 'typing')
+        bot.send_message(cid, 'File is now uploading...')
+        bot.send_chat_action(cid, 'upload_document')
+        bot.send_document(cid, YYGFile)
+        bot.send_message(cid, 'Done!')
+    else:
+        pass
+
 
 # polling updates, ignore errors to be focused on running
 bot.polling(none_stop=True)

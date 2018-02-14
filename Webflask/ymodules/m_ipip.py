@@ -18,13 +18,45 @@ def ipsbgeo(ip):
     resp = r.json()
     try:
         str1 = "Latitude: " + str(resp['latitude']) + '\n'
-        str2 = "Longtitude: " + str(resp['longitude']) + '\n'
-        str4 = "AS: " + resp['organization']
-        str3 = "Address: " + resp['country'] + ' ' + resp['region'] + ' ' + resp['city'] + '\n'
-    except UnboundLocalError as ubd:
-        str3 = "Country: " + resp['country'] + '\n'
-    except KeyError as e:
-        str3 = "Country: " + resp['country'] + '\n'
+    except KeyError as e1:
+        str1 = "Latitude: Failed to get. \n"
+    except UnboundLocalError as ubd1:
+        pass
 
-    result = str1 + str2 + str3 + str4
+    try:
+        str2 = "Longtitude: " + str(resp['longitude']) + '\n'
+    except KeyError as e2:
+        str2 = "Longtitude: Failed to get. \n"
+    except UnboundLocalError as ubd2:
+        pass
+
+    try:
+        str3 = "AS: " + str(resp['organization']) + '\n'
+    except KeyError as e4:
+        str3 = "AS: Failed to get. \n"
+    except UnboundLocalError as ubd3:
+        pass
+
+    try:
+        str4 = "Country: " + str(resp['country']) + '\n'
+    except KeyError as e4:
+        str4 = "Country: Failed to get. \n"
+    except UnboundLocalError as ubd4:
+        pass
+
+    try:
+        str5 = "Region: " + str(resp['region']) + '\n'
+    except KeyError as e5:
+        str5 = "Region: Failed to get. \n"
+    except UnboundLocalError as ubd5:
+        pass
+
+    try:
+        str6 = "City: " + str(resp['city']) + '\n'
+    except KeyError as e6:
+        str6 = "City: Failed to get. \n"
+    except UnboundLocalError as ubd6:
+        pass
+
+    result = str1 + str2 + str3 + str4 + str5 + str6
     return result

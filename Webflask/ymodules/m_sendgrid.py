@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
+import json
 from base64 import b64encode
+from uuid import uuid4 as uuidgen
+
+import sendgrid
 # import magic
 from sendgrid import *
 from sendgrid.helpers.mail import *
+
 from apikey import sgridkey
 
 
@@ -41,13 +46,44 @@ def build_atth(filename, filemime, filedir='/tmp'):
     attach.content = encoded
     attach.type = filemime
     attach.disposition = "attachment"
-    attach.content_id = "201"
+    contentid = str(uuidgen())
+    attach.content_id = contentid[:8]
     return attach
 
 
-def sendmail_withatth(mail_details, attach):
+# data stru: mail_details = {from,to,subject,plaintext,atth,atthname,atthmime}
+
+def buildmail_withatth(mail_details, attach):
+    from_email = Email(mail_details['from'])
+    to_email = Email(mail_details['to'])
+    subject = Email(mail_details['subject'])
+    content = Content("text/plain", mail_details['plaintext'])
+    mail = Mail(from_email, subject, to_email, content)
+    mail.add_attachment(attach)
+    return mail.get()
+
+
+def sendmail_atth(mailconst):
+    rep = {}
     sg = sendgrid.SendGridAPIClient(apikey=sgridkey)
-    mail = Mail()
+    data = mailconst
+    response = sg.client.mail.send.post(request_body=data)
+    rep['status'] = response.status_code
+    rep['body'] = response.body
+    rep['headers'] = response.headers
+    return json.dumps(rep)
 
 
 def sendmail_noatth(mail_details):
+    rep = {}
+    sg = sendgrid.SendGridAPIClient(apikey=sgridkey)
+    from_email = Email(mail_details['from'])
+    to_email = Email(mail_details['to'])
+    subject = mail_details['subject']
+    content = Content("text/plain", mail_details['plaintext'])
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    rep['status'] = response.status_code
+    rep['body'] = response.body
+    rep['headers'] = response.headers
+    return json.dumps(rep)
