@@ -33,6 +33,5 @@ def send_turing(info, userid, key=tulingkey):
     result = requests.post(url, json=data, verify=False).text
     return json.loads(result).get('text')
 
-
 if __name__ == '__main__':
     pass

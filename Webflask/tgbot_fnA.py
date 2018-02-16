@@ -80,7 +80,10 @@ def geoipinfo(msg):
     cid = msg.chat.id
     if (cid in authedchat):
         ipaddrlst = extract_arg(msg.text)
-        ipaddr = ipaddrlst[0]
+        try:
+            ipaddr = ipaddrlst[0]
+        except IndexError as ier:
+            bot.send_message(cid, 'Illgeal Input!')
         if (ipaddr == []):
             bot.reply_to(msg, "Illegal Input.")
         else:
@@ -222,4 +225,9 @@ def recvmail(msg):
 
 
 # polling updates, ignore errors to be focused on running
-bot.polling(none_stop=True)
+try:
+    bot.polling(none_stop=True)
+except urllib3.exceptions as e1:
+    pass
+except requests.exceptions as e2:
+    pass
