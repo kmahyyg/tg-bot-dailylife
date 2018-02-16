@@ -82,14 +82,13 @@ def geoipinfo(msg):
         ipaddrlst = extract_arg(msg.text)
         try:
             ipaddr = ipaddrlst[0]
-        except IndexError as ier:
-            bot.send_message(cid, 'Illgeal Input!')
-        if (ipaddr == []):
-            bot.reply_to(msg, "Illegal Input.")
-        else:
             bot.send_chat_action(cid, 'typing')
             repy = ipsbgeo(ipaddr)
             bot.send_message(cid, repy)
+        except IndexError as ierr:
+            bot.send_message(cid, 'Illgeal Input!')
+        except UnboundLocalError as ubderr:
+            bot.send_message(cid, 'Illegal Input!')
     else:
         pass
 
