@@ -61,8 +61,8 @@
       <file leaf-file-name="tgbot_fnA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tgbot_fnA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="701">
+              <caret line="230" column="0" lean-forward="true" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
               <folding>
                 <element signature="e#50#61#0" expanded="true" />
               </folding>
@@ -194,9 +194,9 @@
       <scroll-view-position x="0" y="0" />
     </layout>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds">
     <option name="width" value="960" />
-    <option name="height" value="1008" />
+    <option name="height" value="1006" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -221,7 +221,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -234,31 +234,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Webflask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Webflask" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Webflask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Webflask" type="462c0819:PsiDirectoryNode" />
-              <item name="sendgrid_inbound_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Webflask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Webflask" type="462c0819:PsiDirectoryNode" />
-              <item name="ymodules" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -699,7 +675,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="960" height="1008" extended-state="4" />
+    <frame x="0" y="0" width="960" height="1006" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1034,10 +1010,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sendgrid_inbound_process/app.py">
+    <entry file="file://$PROJECT_DIR$/ymodules/m_tuling123.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="24" selection-end-column="47" />
+        <state relative-caret-position="759">
+          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -1050,18 +1026,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ymodules/m_tuling123.py">
+    <entry file="file://$PROJECT_DIR$/sendgrid_inbound_process/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+        <state relative-caret-position="506">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="24" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tgbot_fnA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="701">
+          <caret line="230" column="0" lean-forward="true" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
           <folding>
             <element signature="e#50#61#0" expanded="true" />
           </folding>
