@@ -61,7 +61,7 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 - [x] | 1. AliBaba Cloud Package Tracker API Integration
 - [x] | 2. Package BOT Frontend Authentication
 - [x] | 3. Use Flask to do a second pack of third-party API
-- [x] | 4. Communicate with MySQL Server instead of SQLite3
+- [x] | 4. Communicate with MySQL Server instead of SQLite3 [Learnt but no used]
 - [x] | 5. Kuaidi100 API Package Tracker API Integration
 - [x] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
 
@@ -73,13 +73,16 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 
 [PARTIALLY FINISHED ] | 9. pyTelegramBotAPI Frontend Interaction [WORKING]
 
-[TBD] | 10. Chat Messages FLAG Detection and Auto-Reply. (Will be done in the future)
+<del> [WILL NEVER DO] | 10. Chat Messages FLAG Detection and Auto-Reply. (Reason: No Database!) </del>
 
 - [X] | 11. Use ``` https://ip.sb ``` API to get GEOIP info.
+
 
 # Bugs and Issues
 
 - [x] | SFExpress cannot use Kuaidi100 API.
+
+- [ ] | Watchdog service and error handler need to be updated. Welcome PR.
 
 Others still remain unknown.
 
