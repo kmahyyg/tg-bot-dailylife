@@ -1,27 +1,51 @@
-![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![version](https://img.shields.io/badge/version-1.0.1-blue.svg)
 ![license](https://img.shields.io/github/license/kmahyyg/life-tg-bot.svg)
+[![Github file size](https://img.shields.io/github/size/webcaetano/craft/build/phaser-craft.min.js.svg)](https://github.com/kmahyyg/life-tg-bot)
+![Python](https://img.shields.io/badge/Python-3.6-ff69b4.svg)
 
 # Current Status
 
-Developing...
+Need PR.
 
 # Python - TG BOT - YYG
 
 This bot is used to simplify the app you installed in your phone.
 In China mainland, The Android APP eco system is really terrible.
 
-I was concerned about the PackageTracker APP. But it always push the info I don
-'t want.
-I hate to install a lot of "Chinese Malware APP" on my phone. So, now I use Tel
-egram as much as possible.
-As the most powerful Bot API I have ever seen, I hope that, one day in the futu
-re I could only use Telegram to do most of my life.
+I was concerned about the PackageTracker APP. But it always push the info I don't want.
+I hate to install a lot of "Chinese Malware APP" on my phone. So, now I use Telegram as much as possible.
+As the most powerful Bot API I have ever seen, I hope that, one day in the future I could only use Telegram to do most of my life.
 
 # Download and Deploy
 
-Still in development. Git Clone and install dependencies. Then run tgbot_fnA.py
+```bash
+git clone https://github.com/kmahyyg/life-tg-bot.git
+cd ./life-tg-bot/Webflask
+sudo pip3 install -r requirements.txt
+chmod +x ./*.py
+chmod +x ./*.sh
+chmod +x ./*.service
+cp ./tgbot-yyg.service /etc/systemd/system/
+```
 
-More details and improvements will be introduced in the future.
+Create a file named apikey.py in this dircetory, input your API KEY as follows:
+
+```python
+#!/usr/bin/env python3
+#-*- encoding: utf-8 -*-
+
+appcode = 'APPCODE'+ ' ' + <YOUR ALIYUN API KEY>
+tgbottoken = <TELEGRAM BOT TOKEN>
+sgridkey = <SENDGRID API KEY>
+authedchat = <AUTHENTICATED USER ID LIST>
+tulingkey = <TULING123.com Chat API KEY>
+```
+
+Then:
+
+```bash
+python3 ./tgbot_fnA.py
+```
 
 ## Dependencies
 
@@ -29,7 +53,7 @@ See more details in requirements.txt
 
 # Personally
 
-Never use Wechat / QQ. Telegram me.
+Never use Wechat / QQ. Telegram me @uuidgen.
 
 # License
 
@@ -40,11 +64,13 @@ All my open-source project are licensed under AGPL V3, it never has been changed
 I'm now a freshman in a university. In the past few years, I use ```@chinanet``` TG BOT which brought me a lot of 
 happiness. We love checking express packages and make jokes on each other.
 
-However, It stopped working from when I don't know.
+However, It stopped working a few years ago.
 
 I'm trying to practice my programming ability and write this bot to enjoy myself.
 
 # Thanks
+
+@bennythink
 
 1. https://blog.nfz.moe/archives/how-to-write-beautiful-github-readme.html
 2. https://github.com/BennyThink/ExpressBot
