@@ -69,7 +69,7 @@ def cmd_express(msg):
             checked_pkg = result1['result']['list'][0]
             bot.reply_to(msg, str(checked_pkg))
         else:
-            bot.reply_to(msg, "Illegal Input")
+            bot.reply_to(msg, "Illegal Input[ERR-EXP-ELSE]")
     else:
         pass
 
@@ -86,9 +86,9 @@ def geoipinfo(msg):
             repy = ipsbgeo(ipaddr)
             bot.send_message(cid, repy)
         except IndexError as ierr:
-            bot.send_message(cid, 'Illgeal Input!')
+            bot.reply_to(msg, 'Illgeal Input![IERR]')
         except UnboundLocalError as ubderr:
-            bot.send_message(cid, 'Illegal Input!')
+            bot.reply_to(msg, 'Illegal Input![UBDERR]')
     else:
         pass
 
@@ -225,8 +225,12 @@ def recvmail(msg):
 
 # polling updates, ignore errors to be focused on running
 try:
-    bot.polling(none_stop=True)
-except urllib3.exceptions as e1:
-    pass
-except requests.exceptions as e2:
+    from os import getpid
+
+    pid = str(getpid())
+    pidfile = open('/var/run/tgbot.pid', 'w')
+    pidfile.write(pid)
+    pidfile.close()
+    bot.polling(none_stop=True, timeout=30)
+except:
     pass
