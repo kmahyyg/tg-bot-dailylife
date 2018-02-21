@@ -19,6 +19,8 @@ As the most powerful Bot API I have ever seen, I hope that, one day in the futur
 # Download and Deploy
 
 ```bash
+touch /var/run/tgbot.pid && chmod 666 /var/run/tgbot.pid
+<DON'T FORGET TO CREATE YOUR MAIL ARCHIVE FILE>
 git clone https://github.com/kmahyyg/life-tg-bot.git
 cd ./life-tg-bot/Webflask
 sudo pip3 install -r requirements.txt

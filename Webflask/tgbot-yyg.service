@@ -6,11 +6,11 @@ Wants=local-fs.target network-online.target network.target
 [Service]
 PIDFile=/var/run/tgbot.pid
 ExecStart=/usr/bin/python3 /root/life-tg-bot/tgbot_fnA.py
-ExecStop=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -15 $MAINPID
 KillMode=process
 Type=simple
 Restart=on-failure
-RestartSec=30
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
