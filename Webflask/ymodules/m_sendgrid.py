@@ -68,11 +68,10 @@ def sendmail_atth(mailconst):
     sg = sendgrid.SendGridAPIClient(apikey=sgridkey)
     data = mailconst
     response = sg.client.mail.send.post(request_body=data)
-    rep['status'] = response.status_code
-    rep['body'] = response.body
-    rep['headers'] = response.headers
+    rep['status'] = int(response.status_code)
+    rep['header'] = str(response.headers)
+    rep['msg'] = str(response.body.decode())
     return json.dumps(rep)
-
 
 def sendmail_noatth(mail_details):
     rep = {}
@@ -83,7 +82,11 @@ def sendmail_noatth(mail_details):
     content = Content("text/plain", mail_details['plaintext'])
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
-    rep['status'] = response.status_code
-    rep['body'] = response.body
-    rep['headers'] = response.headers
+    rep['status'] = int(response.status_code)
+    rep['header'] = str(response.headers)
+    rep['msg'] = str(response.body.decode())
     return json.dumps(rep)
+
+# maild = {'to': 'test@example.com', 'plaintext': 'helloworld', 'from': 'test@example.com', 'subject': 'helloworld'}
+# sendmail_noatth(maild)
+# response,status_code,headers,body

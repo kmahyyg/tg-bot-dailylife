@@ -96,6 +96,7 @@ def geoipinfo(msg):
 # receive mail attachments
 
 file_name = " "
+file_confirm = " "
 file_mime = " "
 mail_details = {}
 
@@ -108,8 +109,9 @@ def handle_file(msg):
         file_info = bot.get_file(msg.document.file_id)
         file_size = msg.document.file_size
         file_mime = msg.document.mime_type
-        if (file_size > 7340032):
-            file_name = "/tmp" + str(msg.document.file_name)
+        if (file_size < 7340032):
+            file_confirm = str(msg.document.file_name)
+            file_name = "/tmp" + file_confirm
             DFILE = open(file_name, 'wb')
             downloaded_file = bot.download_file(file_info.file_path)
             DFILE.write(downloaded_file)
@@ -135,28 +137,44 @@ def mailwithsg(msg):
     if (cid in authedchat):
         bot.send_chat_action(cid, 'typing')
         mkup = types.ForceReply(selective=False)
-        frommail = bot.send_message(cid, 'From which account? Fill in your username', reply_markup=mkup)
-        msginitid = frommail.message_id
-        if (msg.message_id == msginitid + 1):
-            mail_details['from'] = str(msg.text) + str("@ynu.edu.pl")
-            sendto = bot.send_message(cid, "Send to? reply must start with mail_to:", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 3):
-            mail_details['to'] = (msg.text)
-            mailsub = bot.send_message(cid, "Subject? reply must start with mail_subject:", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 5):
-            mail_details['subject'] = (msg.text)
-            mailcontent = bot.send_message(cid, "Content? reply must start with mail_cont:", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 7):
-            mail_details['plaintext'] = (msg.text)
-            mailattach = bot.send_message(cid, "Do you have attachment? Y/N ", reply_markup=mkup)
-        elif (msg.message_id == msginitid + 9):
-            if msg.text == 'Y':
-                bot.send_message(cid, "Please send your attachment (1 File Only, must <7MiB)")
-                time.sleep(30)
+        bot.send_message(cid, "EACH MSG MUST START WITH **mail_**", parse_mode='Markdown')
+        ask_frommsg = bot.send_message(cid, 'From which account? Fill in your username, start with mail_from:',
+                                       reply_markup=mkup)
+        msginitid = ask_frommsg.message_id
+        if (msg.reply_to_message.message_id == msginitid):
+            addr_fromm = str(msg.text)
+            addr_fromm = addr_fromm.replace('mail_from:', '') + str("@ynu.edu.pl")
+            mail_details['from'] = addr_fromm
+            ask_tomsg = bot.send_message(cid, "Send to? reply must start with mail_to:", reply_markup=mkup)
+            ask_tomsgid = ask_tomsg.message_id
+        elif (msg.reply_to_message.message_id == ask_tomsgid):
+            addr_to = str(msg.text)
+            addr_to = addr_to.replace('mail_to:', '')
+            mail_details['to'] = addr_to
+            ask_submsg = bot.send_message(cid, "Subject? reply must start with mail_subject:", reply_markup=mkup)
+            ask_submsgid = ask_submsg.message_id
+        elif (msg.reply_to_message.message_id == ask_submsgid):
+            mail_sub = str(msg.text)
+            mail_sub = mail_sub.replace('mail_subject:', '')
+            mail_details['subject'] = mail_sub
+            ask_msgtext = bot.send_message(cid, "Content? reply must start with mail_cont:", reply_markup=mkup)
+            ask_msgtextid = ask_msgtext.message_id
+        elif (msg.reply_to_message.message_id == ask_msgtextid):
+            mail_conc = str(msg.text)
+            mail_conc = mail_conc.replace('mail_cont:', '')
+            mail_details['plaintext'] = mail_conc
+            ask_atthconfirm = bot.send_message(cid, "Do you have attachment? mail_Y/mail_N ", reply_markup=mkup)
+            ask_atthconfirmid = ask_atthconfirm.message_id
+        elif (msg.reply_to_message.message_id == ask_atthconfirmid):
+            atth_conf = str(msg.text)
+            atth_conf = atth_conf.replace('mail_', '')
+            if atth_conf == 'Y':
+                bot.send_message(cid, "Please send your attachment (1 File Only, must <7MiB, time out:30s)")
+                time.sleep(32)
                 mail_details['atth'] = True
                 mail_details['atthname'] = file_name
                 mail_details['atthmime'] = file_mime
-            if msg.text == 'N':
+            if atth_conf == 'N':
                 mail_details['atth'] = False
                 bot.send_chat_action(cid, 'typing')
                 bot.send_message(cid, "Done!")
@@ -176,7 +194,7 @@ def finalsend(msg):
         bot.send_message(cid, "Subject:" + mail_details['subject'] + '\n')
         bot.send_message(cid, "Content:" + mail_details['plaintext'] + '\n')
         bot.send_message(cid, "Has attachment:" + str(mail_details['atth']) + '\n')
-        bot.send_message(cid, "File Name:" + str(mail_details['file_name']) + '\n')
+        bot.send_message(cid, "File Name:" + str(file_confirm) + '\n')
         bot.send_message(cid, "You send the mail with above datas." + '\n')
         bot.send_chat_action(cid, 'typing')
         sleep(5)

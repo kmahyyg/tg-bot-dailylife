@@ -9,8 +9,8 @@ ExecStart=/usr/bin/python3 /root/life-tg-bot/tgbot_fnA.py
 ExecStop=/bin/kill -15 $MAINPID
 KillMode=process
 Type=simple
-Restart=on-failure
-RestartSec=10
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
