@@ -93,13 +93,11 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 - [x] | 5. Kuaidi100 API Package Tracker API Integration
 - [x] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
 
-  <del> [DEPRECATED] | 7. Turing-Chat API Integration [Artificial Fool]</del>
-
-  <del> [DEPRECATED] | because No API could be registered now. Welcome PR. </del>
+- [x] | 7. Turing-Chat API Integration [Artificial Fool]
 
 - [X] | 8. SendGrid Inbound Mail Process WebHook. 
 
-[PARTIALLY FINISHED ] | 9. pyTelegramBotAPI Frontend Interaction [WORKING]
+- [X] | 9. pyTelegramBotAPI Frontend Interaction.
 
 <del> [WILL NEVER DO] | 10. Chat Messages FLAG Detection and Auto-Reply. (Reason: No Database!) </del>
 
