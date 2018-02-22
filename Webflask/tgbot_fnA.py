@@ -12,6 +12,7 @@ from ymodules.m_ipip import ipsbgeo
 from ymodules.m_kd100 import *
 from ymodules.m_sendgrid import *
 from ymodules.m_tuling123 import *
+from ymodules.m_sentry import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
@@ -87,8 +88,10 @@ def geoipinfo(msg):
             bot.send_message(cid, repy)
         except IndexError as ierr:
             bot.reply_to(msg, 'Illgeal Input![IERR]')
+            sendlog_sent()
         except UnboundLocalError as ubderr:
             bot.reply_to(msg, 'Illegal Input![UBDERR]')
+            sendlog_sent()
     else:
         pass
 
@@ -244,11 +247,10 @@ def recvmail(msg):
 # polling updates, ignore errors to be focused on running
 try:
     from os import getpid
-
     pid = str(getpid())
     pidfile = open('/var/run/tgbot.pid', 'w')
     pidfile.write(pid)
     pidfile.close()
-    bot.polling(none_stop=True, timeout=30)
+    bot.polling(none_stop=True, timeout=30, interval=5)
 except:
-    pass
+    sendlog_sent()
