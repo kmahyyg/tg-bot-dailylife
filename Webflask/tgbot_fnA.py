@@ -20,7 +20,9 @@ YYGFile = open('/tmp/recvmails_yyg.dat', 'rb')
 ECSFile = open('/tmp/recvmails_ecs.dat', 'rb')
 SpamFile = open('/tmp/recvmails_idk.dat', 'rb')
 
-# telebot.logger.setLevel(logging.INFO)
+import logging
+
+telebot.logger.setLevel(logging.INFO)
 
 # Test Environment with GFW Involved, fuck CCP
 # telebot.apihelper.proxy = {'https': 'http://127.0.0.1:1085'}
@@ -63,6 +65,9 @@ def cmd_express(msg):
                 final = checked_pkg['result']['list'][0]
                 bot.reply_to(msg, str(final))
             else:
+                autodetect_cmpy_answer = 'The company auto-detected is: **' + str(
+                    cmpy) + '** . If anything went wrong, append company code after you check it via /expcmpy.'
+                bot.send_message(msgid, autodetect_cmpy_answer, parse_mode='Markdown')
                 checked_pkg = ckkd100pkg(exparg[0], cmpy)
                 bot.reply_to(msg, checked_pkg)
         elif (len(exparg) == 2):
