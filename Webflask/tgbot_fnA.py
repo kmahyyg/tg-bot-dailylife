@@ -224,19 +224,6 @@ def finalsend(msg):
         pass
 
 
-# tuling123 chat API introduced, proceed all text message
-@bot.message_handler(content_types=['text'])
-def chattuling(msg):
-    cid = msg.chat.id
-    if (cid in authedchat):
-        text = msg.text
-        bot.send_chat_action(cid, 'typing')
-        rpy = send_turing(text, cid)
-        bot.reply_to(msg, rpy)
-    else:
-        pass
-
-
 @bot.message_handler(commands=['recvmail'])
 def recvmail(msg):
     cid = msg.chat.id
@@ -271,6 +258,19 @@ def disssb(msg):
         bot.reply_to(msg, str(resp))
     elif resp == True:
         bot.reply_to(msg, 'Sent to queue!')
+
+        
+# tuling123 chat API introduced, proceed all text message
+@bot.message_handler(content_types=['text'])
+def chattuling(msg):
+    cid = msg.chat.id
+    if (cid in authedchat):
+        text = msg.text
+        bot.send_chat_action(cid, 'typing')
+        rpy = send_turing(text, cid)
+        bot.reply_to(msg, rpy)
+    else:
+        pass
 
 
 # polling updates, ignore errors to be focused on running
