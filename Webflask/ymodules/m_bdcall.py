@@ -43,7 +43,7 @@ def check_phone(phone):
 
 def loads_jsonp(_jsonp):
     try:
-        return json.loads(re.match(".*?({.*}).*", _jsonp, re.S).group(1))
+        return json.loads(re.match(".*?({.*}).*", _jsonp, re.S).group(1), ensure_ascii=False)
     except:
         raise ValueError('Invalid Input')
 
