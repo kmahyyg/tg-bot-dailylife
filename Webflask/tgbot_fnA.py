@@ -5,7 +5,7 @@ import time
 
 import telebot
 from telebot import types
-
+from socket import gethostbyname
 from apikey import tgbottoken, authedchat
 from ymodules.m_aliexp import packagereq
 from ymodules.m_ipip import ipsbgeo
@@ -13,6 +13,7 @@ from ymodules.m_kd100 import *
 from ymodules.m_sendgrid import *
 from ymodules.m_tuling123 import *
 from ymodules.m_sentry import *
+from ymodules.m_bdcall import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
@@ -88,6 +89,7 @@ def geoipinfo(msg):
         ipaddrlst = extract_arg(msg.text)
         try:
             ipaddr = ipaddrlst[0]
+            ipaddr = gethostbyname(ipaddr)
             bot.send_chat_action(cid, 'typing')
             repy = ipsbgeo(ipaddr)
             bot.send_message(cid, repy)
@@ -247,6 +249,28 @@ def recvmail(msg):
         bot.send_message(cid, 'Done!')
     else:
         pass
+
+
+@bot.message_handler(commands=['disstel'])
+def disssb(msg):
+    cid = msg.chat.id
+    tel4u = extract_arg(msg.text)
+    tel4u = tel4u[0]
+    telsta = check_phone(tel4u)
+
+    if telsta == False:
+        bot.reply_to(msg, 'Illegal Tel Number!')
+    elif isinstance(telsta, str):
+        resp = start_call(telsta)
+    else:
+        bot.reply_to(msg, 'Sent to queue.')
+
+    if resp == False:
+        bot.reply_to(msg, 'Unknown Error!')
+    elif isinstance(resp,str):
+        bot.reply_to(msg, str(resp))
+    elif resp == True:
+        bot.reply_to(msg, 'Sent to queue!')
 
 
 # polling updates, ignore errors to be focused on running
