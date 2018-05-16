@@ -1,0 +1,9 @@
+start - Start Bot
+expcmpy - Express Company code check
+express - <EXPRESS CODE> <COMPANY(Optional)>
+ipip - GEOIP info
+douyu - Check Douyu live status
+help - Help Document
+newmail - Compose mail with edu.pl
+recvmail - Receive mail with edu.pl
+disstel - Diss somebody annoying
