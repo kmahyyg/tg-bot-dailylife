@@ -14,6 +14,7 @@ from ymodules.m_sendgrid import *
 from ymodules.m_tuling123 import *
 from ymodules.m_sentry import *
 from ymodules.m_bdcall import *
+from ymodules.m_douyu import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
@@ -39,6 +40,18 @@ def send_welcome(msg):
     msgid = str(msg.chat.id)
     reply_msg = "Welcome to use the bot of @uuidgen. We love @chinanet . \n Your Private Chat ID: " + msgid
     bot.reply_to(msg, reply_msg)
+
+
+# douyu live notification status check
+@bot.message_handler(commands=['douyu'])
+def cmd_douyu(msg):
+    msgid = str(msg.chat.id)
+    try:
+        roomid = extract_arg(msg.text)[0]
+    except:
+        roomid = 71017
+    live_status = douyunty(roomid)
+    bot.send_message(msgid,live_status,parse_mode='Markdown')
 
 
 # if auto detect failed, ask user to check company code here.
