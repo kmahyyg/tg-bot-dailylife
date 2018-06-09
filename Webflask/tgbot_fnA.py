@@ -15,6 +15,7 @@ from ymodules.m_tuling123 import *
 from ymodules.m_sentry import *
 from ymodules.m_bdcall import *
 from ymodules.m_douyu import *
+from ymodules.m_sogouhmt import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
@@ -272,7 +273,23 @@ def disssb(msg):
     elif resp == True:
         bot.reply_to(msg, 'Sent to queue!')
 
-        
+@bot.message_handler(commands=['wtftel'])
+def checkspam(msg):
+    cid = msg.chat.id
+    tel4u = extract_arg(msg.text)
+    tel4u = tel4u[0]
+    result1 = usr_subdata(tel4u)
+    if result1 == '':
+        result1 = '暂无Spam记录'
+    result2 = ofc_belonging(tel4u)
+    if result2 == 'null':
+        result2 = '您可能输入错误'
+    if result2 == '':
+        result2 = '您输入的电话号码可能是座机'
+    result = "您查询的号码来自  " + result2 + "  可能是  " + result1
+    bot.reply_to(msg,str(result))
+
+
 # tuling123 chat API introduced, proceed all text message
 @bot.message_handler(content_types=['text'])
 def chattuling(msg):
