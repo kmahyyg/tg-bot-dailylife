@@ -1,7 +1,7 @@
-![version](https://img.shields.io/badge/version-1.0.1-blue.svg)
+![version](https://img.shields.io/badge/version-1.3.0-blue.svg)
 ![license](https://img.shields.io/github/license/kmahyyg/life-tg-bot.svg)
-[![Github file size](https://img.shields.io/github/size/webcaetano/craft/build/phaser-craft.min.js.svg)](https://github.com/kmahyyg/life-tg-bot)
 ![Python](https://img.shields.io/badge/Python-3.6-ff69b4.svg)
+![star](https://img.shields.io/github/stars/kmahyyg/life-tg-bot.svg)
 
 # Current Status
 
@@ -12,17 +12,14 @@ Need PR.
 This bot is used to simplify the app you installed in your phone.
 In China mainland, The Android APP eco system is really terrible.
 
-I was concerned about the PackageTracker APP. But it always push the info I don't want.
-I hate to install a lot of "Chinese Malware APP" on my phone. So, now I use Telegram as much as possible.
 As the most powerful Bot API I have ever seen, I hope that, one day in the future I could only use Telegram to do most of my life.
 
 # Download and Deploy
 
 ```bash
 touch /var/run/tgbot.pid && chmod 666 /var/run/tgbot.pid
-<DON'T FORGET TO CREATE YOUR MAIL ARCHIVE FILE>
 git clone https://github.com/kmahyyg/life-tg-bot.git
-cd ./life-tg-bot/Webflask
+cd ./life-tg-bot/
 sudo pip3 install -r requirements.txt
 chmod +x ./*.py
 chmod +x ./*.sh
@@ -30,18 +27,7 @@ chmod +x ./*.service
 cp ./tgbot-yyg.service /etc/systemd/system/
 ```
 
-Create a file named apikey.py in this dircetory, input your API KEY as follows:
-
-```python
-#!/usr/bin/env python3
-#-*- encoding: utf-8 -*-
-
-appcode = 'APPCODE'+ ' ' + <YOUR ALIYUN API KEY>
-tgbottoken = <TELEGRAM BOT TOKEN>
-sgridkey = <SENDGRID API KEY>
-authedchat = <AUTHENTICATED USER ID LIST>
-tulingkey = <TULING123.com Chat API KEY>
-```
+Renamed `apikey.py.eg` to `apikey.py` in this dircetory, input your API KEY there.
 
 Then:
 
@@ -55,7 +41,7 @@ See more details in requirements.txt
 
 # Personally
 
-Never use Wechat / QQ. Telegram me @uuidgen.
+Never use Wechat / QQ. Open a issue here.
 
 # License
 
@@ -89,26 +75,21 @@ I'm trying to practice my programming ability and write this bot to enjoy myself
 - [x] | 1. AliBaba Cloud Package Tracker API Integration
 - [x] | 2. Package BOT Frontend Authentication
 - [x] | 3. Use Flask to do a second pack of third-party API
-- [x] | 4. Communicate with MySQL Server instead of SQLite3 [Learnt but no used]
-- [x] | 5. Kuaidi100 API Package Tracker API Integration
-- [x] | 6. SendGrid API Integration to allow mail send using my .edu.pl domain
+- [x] | 4. Kuaidi100 API Package Tracker API Integration
+- [x] | 5. Turing-Chat API Integration [Artificial Fool]
+- [X] | 6. SendGrid Inbound Mail Process WebHook. 
+- [X] | 7. pyTelegramBotAPI Frontend Interaction.
 
-- [x] | 7. Turing-Chat API Integration [Artificial Fool]
+<del> [WILL NEVER DO] | 8. Chat Messages FLAG Detection and Auto-Reply. (Reason: No Database!) </del>
 
-- [X] | 8. SendGrid Inbound Mail Process WebHook. 
-
-- [X] | 9. pyTelegramBotAPI Frontend Interaction.
-
-<del> [WILL NEVER DO] | 10. Chat Messages FLAG Detection and Auto-Reply. (Reason: No Database!) </del>
-
-- [X] | 11. Use ``` https://ip.sb ``` API to get GEOIP info.
-
+- [X] | 9. Use ``` https://ip.sb ``` API to get GEOIP info.
+- [ ] | 10. Use this bot to manage a channel.
 
 # Bugs and Issues
 
 - [x] | SFExpress cannot use Kuaidi100 API.
 
-- [ ] | Watchdog service and error handler need to be updated. Welcome PR.
+- [X] | Watchdog service and error handler need to be updated. Welcome PR.
 
 Others still remain unknown.
 

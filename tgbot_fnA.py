@@ -152,6 +152,12 @@ def checkspam(msg):
     bot.reply_to(msg,str(result))
 
 
+# Channel manager to post and forward new msg from the channel you defined.
+@bot.message_handler(commands=['chanman'])
+def channel_manager(msg):
+    pass #TODO
+
+
 # tuling123 chat API introduced, proceed all text message
 @bot.message_handler(content_types=['text'])
 def chattuling(msg):
