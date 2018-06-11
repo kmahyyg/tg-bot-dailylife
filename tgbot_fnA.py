@@ -14,13 +14,12 @@ from ymodules.m_douyu import *
 from ymodules.m_sogouhmt import *
 
 # define bot instance
-bot = telebot.TeleBot(tgbottoken)
+bot = telebot.AsyncTeleBot(tgbottoken)
 YYGFile = open('/tmp/recvmails_yyg.dat', 'rb')
 ECSFile = open('/tmp/recvmails_ecs.dat', 'rb')
 SpamFile = open('/tmp/recvmails_idk.dat', 'rb')
 
 import logging
-
 telebot.logger.setLevel(logging.INFO)
 
 # Test Environment with GFW Involved, fuck CCP
@@ -35,7 +34,7 @@ def extract_arg(arg):
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(msg):
     msgid = str(msg.chat.id)
-    reply_msg = "Welcome to use the bot of @uuidgen. We love @chinanet . \n Your Private Chat ID: " + msgid
+    reply_msg = "Welcome to use the bot of @welovezoe. We love @chinanet . \n Your Private Chat ID: " + msgid
     bot.reply_to(msg, reply_msg)
 
 
@@ -154,8 +153,31 @@ def checkspam(msg):
 
 # Channel manager to post and forward new msg from the channel you defined.
 @bot.message_handler(commands=['chanman'])
-def channel_manager(msg):
-    pass #TODO
+def chanmgr_permcheck(msg):
+    cid = msg.chat.id
+    chan_usrname = extract_arg(msg.text)[0]
+    if (cid in authedchat):
+        if chan_usrname[0] != '@':
+            bot.send_message(cid,"Please input your channel username, start with @")
+        botid = bot.get_me().id
+        postchanid = bot.get_chat(str(chan_usrname)).id
+        try:
+            botstatus = bot.get_chat_member(postchanid,botid).status
+            botidentity = bot.get_chat_member(postchanid,botid).can_post_messages
+            if botstatus == 'administrator' and botidentity == True:
+                pass
+                #TODO: next_step_handler(msg,chanmgr_resendmsg)
+            else:
+                bot.reply_to(cid, 'No permission to do this operation.')
+        except:
+            bot.reply_to(cid,'No permission to do this operation.')
+    else:
+        pass
+
+
+def chanmgr_resendmsg(msg):
+    pass  #TODO,read and resend msg.
+
 
 
 # tuling123 chat API introduced, proceed all text message

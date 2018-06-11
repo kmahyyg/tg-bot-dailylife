@@ -4,5 +4,5 @@
 appcode = 'APPCODE'+ ' ' + '<ALI PKG API KEY>'
 tgbottoken = ''
 authedchat = ['ADMINS ID']
-tulingkey = 'TULING BOT APIKEY'
+tulingkey = 'TURING BOT APIKEY'
 sentryid = 'SENTRY BUG TRACKER ID'

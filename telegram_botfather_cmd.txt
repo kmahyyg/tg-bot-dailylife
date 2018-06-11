@@ -1,9 +1,9 @@
 start - Start Bot
 expcmpy - Express Company code check
 express - <EXPRESS CODE> <COMPANY(Optional)>
-ipip - GEOIP info
-douyu - Check Douyu live status
+ipip - GEOIP info <IP/DOMAIN>
+douyu - Check Douyu live status <ROOM NO>
 help - Help Document
-disstel - Diss somebody annoying
-wtftel - Check if this tel is spam
-chanman - Channel Manage and send a new post
+disstel - Diss somebody annoying  <TEL>
+wtftel - Check if this tel is spam <TEL>
+chanman - Channel Manage and send a new post <CHANNEL **ID**>
