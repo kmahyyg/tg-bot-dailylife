@@ -138,7 +138,11 @@ def disssb(msg):
 def checkspam(msg):
     cid = msg.chat.id
     tel4u = extract_arg(msg.text)
-    tel4u = tel4u[0]
+    try:
+        tel4u = tel4u[0]
+    except:
+        bot.send_message(cid,"Input Error.")
+        return None
     result1 = usr_subdata(tel4u)
     if result1 == '':
         result1 = '暂无Spam记录'
