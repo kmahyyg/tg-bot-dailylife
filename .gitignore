@@ -121,5 +121,6 @@ apikey.py
 static/
 templates/
 ymodules/apikey.py
+unittest
 .idea
 archived/test.db

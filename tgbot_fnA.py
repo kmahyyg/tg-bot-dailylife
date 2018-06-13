@@ -14,16 +14,15 @@ from ymodules.m_douyu import *
 from ymodules.m_sogouhmt import *
 
 # define bot instance
-bot = telebot.AsyncTeleBot(tgbottoken)
-YYGFile = open('/tmp/recvmails_yyg.dat', 'rb')
-ECSFile = open('/tmp/recvmails_ecs.dat', 'rb')
-SpamFile = open('/tmp/recvmails_idk.dat', 'rb')
+bot = telebot.TeleBot(tgbottoken)
 
 import logging
+
 telebot.logger.setLevel(logging.INFO)
 
+
 # Test Environment with GFW Involved, fuck CCP
-# telebot.apihelper.proxy = {'https': 'http://127.0.0.1:1085'}
+# telebot.apihelper.proxy = {'https': 'http://127.0.0.1:3084'}
 
 # separate arguments into list to handle with msg text
 def extract_arg(arg):
@@ -47,7 +46,7 @@ def cmd_douyu(msg):
     except:
         roomid = 71017
     live_status = douyunty(roomid)
-    bot.send_message(msgid,live_status,parse_mode='Markdown')
+    bot.send_message(msgid, live_status, parse_mode='Markdown')
 
 
 # if auto detect failed, ask user to check company code here.
@@ -128,7 +127,7 @@ def disssb(msg):
 
     if resp == False:
         bot.reply_to(msg, 'Unknown Error!')
-    elif isinstance(resp,str):
+    elif isinstance(resp, str):
         bot.reply_to(msg, str(resp))
     elif resp == True:
         bot.reply_to(msg, 'Sent to queue!')
@@ -148,36 +147,85 @@ def checkspam(msg):
     if result2 == '':
         result2 = '您输入的电话号码可能是座机'
     result = "您查询的号码来自  " + result2 + "  可能是  " + result1
-    bot.reply_to(msg,str(result))
+    bot.reply_to(msg, str(result))
 
 
 # Channel manager to post and forward new msg from the channel you defined.
 @bot.message_handler(commands=['chanman'])
 def chanmgr_permcheck(msg):
     cid = msg.chat.id
-    chan_usrname = extract_arg(msg.text)[0]
-    if (cid in authedchat):
-        if chan_usrname[0] != '@':
-            bot.send_message(cid,"Please input your channel username, start with @")
-        botid = bot.get_me().id
-        postchanid = bot.get_chat(str(chan_usrname)).id
-        try:
-            botstatus = bot.get_chat_member(postchanid,botid).status
-            botidentity = bot.get_chat_member(postchanid,botid).can_post_messages
-            if botstatus == 'administrator' and botidentity == True:
-                pass
-                #TODO: next_step_handler(msg,chanmgr_resendmsg)
-            else:
+    try:
+        chan_usrname = extract_arg(msg.text)
+        chan_usrname = chan_usrname[0]
+        if (cid in authedchat):
+            if chan_usrname[0] != '@':
+                bot.send_message(cid, "Please input your channel username, start with @")
+            botid = bot.get_me().id
+            global postchanid
+            postchanid = bot.get_chat(str(chan_usrname)).id
+            try:
+                botstatus = bot.get_chat_member(postchanid, botid).status
+                botidentity = bot.get_chat_member(postchanid, botid).can_post_messages
+                if botstatus == 'administrator' and botidentity == True:
+                    bot.send_message(cid, "Channel administration permission check completed and passed.")
+                    global requestmsg
+                    requestmsg = bot.send_message(cid, "Please reply. Your reply msg will be send to channel.")
+                    bot.register_next_step_handler(msg, chanmgr_resendmsg)
+                    # https://github.com/eternnoir/pyTelegramBotAPI/blob/master/examples/step_example.py
+                else:
+                    bot.reply_to(cid, 'No permission to do this operation.')
+            except:
                 bot.reply_to(cid, 'No permission to do this operation.')
-        except:
-            bot.reply_to(cid,'No permission to do this operation.')
-    else:
-        pass
+        else:
+            pass
+    except:
+        bot.send_message(cid, "Main Process function error.")
 
 
 def chanmgr_resendmsg(msg):
-    pass  #TODO,read and resend msg.
-
+    if msg.reply_to_message.message_id == requestmsg.message_id:
+        if msg.content_type == 'text':
+            bot.send_message(postchanid, msg.text, parse_mode='Markdown')
+        elif msg.content_type == 'photo':
+            photolstlen = len(msg.photo)
+            photoid = msg.photo[photolstlen - 1]['file_id']
+            desc1 = msg.caption
+            if desc1 == None:
+                desc1 = ''
+            bot.send_photo(postchanid, photoid, caption=desc1)
+        elif msg.content_type == 'sticker':
+            stker_id = msg.sticker.file_id
+            bot.send_sticker(postchanid, stker_id, disable_notification=True)
+        elif msg.content_type == 'document':
+            doc_id = msg.document.file_id
+            desc1 = msg.caption
+            if desc1 == None:
+                desc1 = ''
+            bot.send_document(postchanid, doc_id, caption=desc1)
+        elif msg.content_type == 'video':
+            vid_id = msg.video.file_id
+            desc1 = msg.caption
+            if desc1 == None:
+                desc1 = ''
+            bot.send_document(postchanid, vid_id, caption=desc1)
+        elif msg.content_type == 'audio':
+            audi_id = msg.audio.file_id
+            desc1 = msg.caption
+            if desc1 == None:
+                desc1 = ''
+            bot.send_audio(postchanid, audi_id, caption=desc1)
+        elif msg.content_type == 'voice':
+            voc_id = msg.voice.file_id
+            desc1 = msg.caption
+            if desc1 == None:
+                desc1 = ''
+            bot.send_voice(postchanid, voc_id, caption=desc1)
+        else:
+            bot.send_message(msg.chat.id, '''
+             This type of message is not supported currently for channel manager.
+             If you still want to send this message, send it as a file please.
+             The location & video note & media group & contact is not supported, due to privacy protection.
+            ''')
 
 
 # tuling123 chat API introduced, proceed all text message
@@ -196,6 +244,7 @@ def chattuling(msg):
 # polling updates, ignore errors to be focused on running
 try:
     from os import getpid
+
     pid = str(getpid())
     pidfile = open('/var/run/tgbot.pid', 'w')
     pidfile.write(pid)
