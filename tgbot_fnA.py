@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 import telebot
+from telebot import types
 from socket import gethostbyname
 from apikey import tgbottoken, authedchat
 from ymodules.m_aliexp import packagereq
@@ -154,32 +155,36 @@ def checkspam(msg):
 @bot.message_handler(commands=['chanman'])
 def chanmgr_permcheck(msg):
     cid = msg.chat.id
+    chan_usrname = extract_arg(msg.text)
     try:
-        chan_usrname = extract_arg(msg.text)
         chan_usrname = chan_usrname[0]
-        if (cid in authedchat):
-            if chan_usrname[0] != '@':
-                bot.send_message(cid, "Please input your channel username, start with @")
-            botid = bot.get_me().id
-            global postchanid
-            postchanid = bot.get_chat(str(chan_usrname)).id
-            try:
-                botstatus = bot.get_chat_member(postchanid, botid).status
-                botidentity = bot.get_chat_member(postchanid, botid).can_post_messages
-                if botstatus == 'administrator' and botidentity == True:
-                    bot.send_message(cid, "Channel administration permission check completed and passed.")
-                    global requestmsg
-                    requestmsg = bot.send_message(cid, "Please reply. Your reply msg will be send to channel.")
-                    bot.register_next_step_handler(msg, chanmgr_resendmsg)
-                    # https://github.com/eternnoir/pyTelegramBotAPI/blob/master/examples/step_example.py
-                else:
-                    bot.reply_to(cid, 'No permission to do this operation.')
-            except:
-                bot.reply_to(cid, 'No permission to do this operation.')
-        else:
-            pass
-    except:
-        bot.send_message(cid, "Main Process function error.")
+    except IndexError as e:
+        bot.reply_to(msg,e)
+        return None
+    if (cid in authedchat):
+        if chan_usrname[0] != '@':
+            bot.send_message(cid, "Please input your channel username, start with @")
+            return None
+        botid = bot.get_me().id
+        global postchanid
+        postchanid = bot.get_chat(str(chan_usrname)).id
+        try:
+            botstatus = bot.get_chat_member(postchanid, botid).status
+            botidentity = bot.get_chat_member(postchanid, botid).can_post_messages
+            if botstatus == 'administrator' and botidentity == True:
+                bot.send_message(cid, "Channel administration permission check completed and passed.")
+                global requestmsg
+                mkup = types.ForceReply(selective=True)
+                requestmsg = bot.send_message(cid, "Please reply. Your reply msg will be send to channel.",
+                                              reply_markup=mkup)
+                bot.register_next_step_handler(msg, chanmgr_resendmsg)
+                # https://github.com/eternnoir/pyTelegramBotAPI/blob/master/examples/step_example.py
+            else:
+                bot.reply_to(msg, 'No permission to do this operation. @Line181')
+        except:
+            bot.reply_to(msg, 'No permission to do this operation. @Line183')
+    else:
+        bot.reply_to(msg,'No permission to do this operation. @Line184')
 
 
 def chanmgr_resendmsg(msg):
