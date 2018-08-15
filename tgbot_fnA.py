@@ -253,7 +253,6 @@ def chattuling(msg):
 # polling updates, ignore errors to be focused on running
 try:
     from os import getpid
-
     pid = str(getpid())
     pidfile = open('/var/run/tgbot.pid', 'w')
     pidfile.write(pid)
