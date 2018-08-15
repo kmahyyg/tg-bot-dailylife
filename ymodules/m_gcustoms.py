@@ -22,7 +22,7 @@
 # https://developers.google.com/custom-search/json-api/v1/overview
 # https://developers.google.com/custom-search/
 
-from urllib.parse import quote
+from urllib.parse import quote,unquote
 
 import requests
 
@@ -44,6 +44,7 @@ def search_google(querystr):
         sear_resu = r.json()['items'][0]
         resu_title = sear_resu['title']
         resu_link = sear_resu['link']
+        querystr = unquote(querystr)
         outmsg = str('The Google Result of ') + querystr + " is: \n" + str(resu_title) + "\n" + str(resu_link)
         outmsg += '\n Check Link Preview for more information.'
         return outmsg
