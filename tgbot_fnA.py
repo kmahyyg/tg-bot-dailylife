@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
+from socket import gethostbyname
+
 import telebot
 from telebot import types
-from socket import gethostbyname
+
 from apikey import tgbottoken, authedchat
 from ymodules.m_aliexp import packagereq
-from ymodules.m_ipip import ipsbgeo
-from ymodules.m_kd100 import *
-from ymodules.m_tuling123 import *
-from ymodules.m_sentry import *
 from ymodules.m_bdcall import *
 from ymodules.m_douyu import *
+from ymodules.m_gcustoms import *
+from ymodules.m_ipip import ipsbgeo
+from ymodules.m_kd100 import *
+from ymodules.m_sentry import *
 from ymodules.m_sogouhmt import *
+from ymodules.m_tuling123 import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
@@ -141,7 +144,7 @@ def checkspam(msg):
     try:
         tel4u = tel4u[0]
     except:
-        bot.send_message(cid,"Input Error.")
+        bot.send_message(cid, "Input Error.")
         return None
     result1 = usr_subdata(tel4u)
     if result1 == '':
@@ -155,6 +158,26 @@ def checkspam(msg):
     bot.reply_to(msg, str(result))
 
 
+# Add Google Search bot for group usage
+@bot.message_handler(commands=['google'])
+def get_G_results(msg):
+    cid = msg.chat.id
+    if cid in authedchat:
+        querytxt = extract_arg(msg.text)
+        try:
+            querytxt = querytxt[0]
+            if querytxt == '':
+                bot.reply_to(msg, "Empty Query")
+            else:
+                querytxt = str(querytxt)
+                result = search_google(querytxt)
+                bot.reply_to(msg, result)
+        except:
+            bot.reply_to(msg, "Exception Occured. Contact Admin Please.")
+    else:
+        bot.reply_to(msg, "Permission Denied.")
+
+
 # Channel manager to post and forward new msg from the channel you defined.
 @bot.message_handler(commands=['chanman'])
 def chanmgr_permcheck(msg):
@@ -163,7 +186,7 @@ def chanmgr_permcheck(msg):
     try:
         chan_usrname = chan_usrname[0]
     except IndexError as e:
-        bot.reply_to(msg,e)
+        bot.reply_to(msg, e)
         return None
     if (cid in authedchat):
         if chan_usrname[0] != '@':
@@ -188,7 +211,7 @@ def chanmgr_permcheck(msg):
         except:
             bot.reply_to(msg, 'No permission to do this operation. @Line183')
     else:
-        bot.reply_to(msg,'No permission to do this operation. @Line184')
+        bot.reply_to(msg, 'No permission to do this operation. @Line184')
 
 
 def chanmgr_resendmsg(msg):
@@ -253,6 +276,7 @@ def chattuling(msg):
 # polling updates, ignore errors to be focused on running
 try:
     from os import getpid
+
     pid = str(getpid())
     pidfile = open('/var/run/tgbot.pid', 'w')
     pidfile.write(pid)
