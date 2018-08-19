@@ -165,7 +165,7 @@ def get_G_results(msg):
     if cid in authedchat:
         querytxt = extract_arg(msg.text)
         try:
-            querytxt = querytxt[0]
+            querytxt = ''.join(querytxt)
             if querytxt == '':
                 bot.reply_to(msg, "Empty Query")
             else:
