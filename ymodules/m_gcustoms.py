@@ -49,5 +49,5 @@ def search_google(querystr):
         outmsg += '\n Check Link Preview for more information.'
         return outmsg
     except:
-        outmsg = 'Exception Occured!'
+        outmsg = 'Exception Occured @ internal files!'
         return outmsg
