@@ -29,7 +29,7 @@ import requests
 from apikey import googleseo_key
 
 baseurl = 'https://www.googleapis.com/customsearch/v1?c2coff=0&cr=countryUS&cx=005159781712139156125%3Aslanvqvnhwu\
-&filter=0&highRange=1&safe=off&q='
+&filter=0&num=1&safe=off&q='
 gcse_apikey = '&key=' + googleseo_key
 custom_header = {'Accept': 'application/json'}
 
@@ -45,8 +45,8 @@ def search_google(querystr):
         resu_title = sear_resu['title']
         resu_link = sear_resu['link']
         querystr = unquote(querystr)
-        outmsg = str('The Google Result of ') + querystr + " is: \n" + str(resu_title) + "\n" + str(resu_link)
-        outmsg += '\n Check Link Preview for more information.'
+        outmsg = str('The Google Result of ') + querystr + " is: \n \n" + str(resu_title) + " \n \n" + str(resu_link)
+        outmsg += '\n \n Check Link Preview for more information.'
         return outmsg
     except:
         outmsg = 'Exception Occured @ internal files!'
