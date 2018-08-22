@@ -6,3 +6,4 @@ tgbottoken = ''
 authedchat = ['ADMINS ID']
 tulingkey = 'TURING BOT APIKEY'
 sentryid = 'SENTRY BUG TRACKER ID'
+googleseo_key = 'Google Custom Search APIKEY'

@@ -23,7 +23,7 @@
 # https://developers.google.com/custom-search/
 
 from urllib.parse import quote,unquote
-
+from ymodules.m_sentry import *
 import requests
 
 from apikey import googleseo_key
@@ -48,6 +48,12 @@ def search_google(querystr):
         outmsg = str('The Google Result of ') + querystr + " is: \n \n" + str(resu_title) + " \n \n" + str(resu_link)
         outmsg += '\n \n Check Link Preview for more information.'
         return outmsg
+    except KeyError:
+        sear_resu = r.json()
+        if sear_resu['searchInformation']['formattedTotalResults'] == '0':
+            outmsg = ' Search Result is None! Something may went wrong, please don\'t use search params. '
+            return outmsg
     except:
         outmsg = 'Exception Occured @ internal files!'
+        sendlog_sent()
         return outmsg
