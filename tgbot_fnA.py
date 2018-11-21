@@ -164,10 +164,12 @@ def checkspam(msg):
 def getarchwiki(msg):
     keyw = extract_arg(msg.text)
     try:
-        keyw = keyw[0]
+        keyw = keyw[0:]
+        keyn = ''
+        keyn += ''.join(keyw)
+        retmsg = archwikilink(keyn)
     except IndexError as e:
-        bot.reply_to(msg, e)
-    retmsg = archwikilink(keyw)
+        retmsg = e
     bot.reply_to(msg, str(retmsg))
 
 
