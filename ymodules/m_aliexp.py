@@ -12,7 +12,7 @@ import requests
 
 from apikey import appcode
 
-host = 'http://jisukdcx.market.alicloudapi.com'
+host = 'https://jisukdcx.market.alicloudapi.com'
 path = '/express/query'
 FILE = open('alipkgbot.log', 'w+')
 

@@ -10,7 +10,7 @@ from apikey import tgbottoken, authedchat
 from ymodules.m_aliexp import packagereq
 from ymodules.m_bdcall import *
 from ymodules.m_douyu import *
-from ymodules.m_gcustoms import *
+from ymodules.m_archwiki import *
 from ymodules.m_ipip import ipsbgeo
 from ymodules.m_kd100 import *
 from ymodules.m_sentry import *
@@ -158,24 +158,17 @@ def checkspam(msg):
     bot.reply_to(msg, str(result))
 
 
-# Add Google Search bot for group usage
-@bot.message_handler(commands=['google'])
-def get_G_results(msg):
-    cid = msg.chat.id
-    if cid in authedchat:
-        querytxt = extract_arg(msg.text)
-        try:
-            querytxt = ' '.join(querytxt)
-            if querytxt == '':
-                bot.reply_to(msg, "Empty Query")
-            else:
-                querytxt = str(querytxt)
-                result = search_google(querytxt)
-                bot.reply_to(msg, result)
-        except:
-            bot.reply_to(msg, "Exception Occured. Contact Admin Please.")
-    else:
-        bot.reply_to(msg, "Permission Denied.")
+# Deprecated Google Search Feature, use @letmebot instead,  due to search result rank unreliable.
+# Add get arch wiki link.
+@bot.message_handler(commands=['archwiki'])
+def getarchwiki(msg):
+    keyw = extract_arg(msg.text)
+    try:
+        keyw = keyw[0]
+    except IndexError as e:
+        bot.reply_to(msg, e)
+    retmsg = archwikilink(keyw)
+    bot.reply_to(msg, str(retmsg))
 
 
 # Channel manager to post and forward new msg from the channel you defined.
