@@ -166,7 +166,7 @@ def getarchwiki(msg):
     try:
         keyw = keyw[0:]
         keyn = ''
-        keyn += ''.join(keyw)
+        keyn += ' '.join(keyw)
         retmsg = archwikilink(keyn)
     except IndexError as e:
         retmsg = e
