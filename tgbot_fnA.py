@@ -56,7 +56,7 @@ def cmd_douyu(msg):
 # if auto detect failed, ask user to check company code here.
 @bot.message_handler(commands=['expcmpy'])
 def cmd_expcmpy(msg):
-    msgrpy = "This command is used to check the proper company code of express. \n https://github.com/kmahyyg/life-tg-bot/blob/dev/Webflask/expno.md "
+    msgrpy = "This command is used to check the proper company code of express. \n https://www.kmahyyg.xyz/express/index.html "
     bot.reply_to(msg, msgrpy)
 
 
@@ -86,7 +86,11 @@ def cmd_express(msg):
         elif (len(exparg) == 2):
             result1 = packagereq(exparg[0], exparg[1])
             checked_pkg = result1['result']['list'][0]
-            bot.reply_to(msg, str(checked_pkg))
+            pkg_poster = '\nPostman: ' + result1['courier'] + result1['courierPhone']
+            if pkg_poster == '':
+                bot.reply_to(msg, str(checked_pkg))
+            else:
+                bot.reply_to(msg, str(checked_pkg)+pkg_poster)
         else:
             bot.reply_to(msg, "Illegal Input[ERR-EXP-ELSE]")
     else:

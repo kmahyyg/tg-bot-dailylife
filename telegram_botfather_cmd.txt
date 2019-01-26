@@ -8,3 +8,4 @@ disstel - Diss somebody annoying  <TEL>
 wtftel - Check if this tel is spam <TEL>
 google - Google Custom Search
 chanman - Channel Manage and send a new post <CHANNEL **USERNAME**, start with @>
+archwiki - Get arch wiki link
