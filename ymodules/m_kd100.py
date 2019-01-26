@@ -37,7 +37,8 @@ def ckkd100pkg(expno, cpny):
     req = requests.get(url=url)
     resp = req.json()
     if (resp['status'] != '200'):
-        failed = 400
+        failed = 'Server Return Error: \n' + resp[
+            'message'] + '\n You may need to add the company manually to use another API'
         return failed
     else:
         latest = resp['data'][0]['context']
