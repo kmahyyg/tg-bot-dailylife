@@ -86,7 +86,7 @@ def cmd_express(msg):
         elif (len(exparg) == 2):
             result1 = packagereq(exparg[0], exparg[1])
             checked_pkg = result1['result']['list'][0]
-            pkg_poster = '\nPostman: ' + result1['courier'] + result1['courierPhone']
+            pkg_poster = '\nPostman: ' + result1['result']['courier'] + result1['result']['courierPhone']
             if pkg_poster == '':
                 bot.reply_to(msg, str(checked_pkg))
             else:
