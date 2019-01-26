@@ -16,4 +16,3 @@ python-magic
 requests
 six
 urllib3
-xkit
