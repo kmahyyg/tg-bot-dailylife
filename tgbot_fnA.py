@@ -202,7 +202,7 @@ def lwstddoc(msg):
         bot.reply_to(msg, result)
         return
     elif before_check == 2:
-        bot.reply_to(msg, "CHINA MAINLAND IP IS BANNED!")
+        bot.reply_to(msg, "CHINA MAINLAND IP OR PRIVATE/RESERVED/LAN IP IS BANNED!")
         return
 
 
