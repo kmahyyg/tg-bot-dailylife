@@ -17,6 +17,8 @@ def ipipcheck(ipaddr):
         return 2
     try:
         resp = resp.split(sep=',')
+        if len(resp) < 4:
+            return 2
         if resp[0] == '"中国"':
             if resp[1] == '"香港"' or resp[1] == '"台湾"' or resp[1] == '"台湾"':
                 return 1
