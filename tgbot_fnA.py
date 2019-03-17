@@ -4,6 +4,8 @@
 from socket import gethostbyname
 
 import telebot
+import logging
+
 from telebot import types
 
 from apikey import tgbottoken, authedchat
@@ -16,11 +18,10 @@ from ymodules.m_kd100 import *
 from ymodules.m_sentry import *
 from ymodules.m_sogouhmt import *
 from ymodules.m_tuling123 import *
+from ymodules.m_lwstress import *
 
 # define bot instance
 bot = telebot.TeleBot(tgbottoken)
-
-import logging
 
 telebot.logger.setLevel(logging.INFO)
 
@@ -90,7 +91,7 @@ def cmd_express(msg):
             if pkg_poster == '':
                 bot.reply_to(msg, str(checked_pkg))
             else:
-                bot.reply_to(msg, str(checked_pkg)+pkg_poster)
+                bot.reply_to(msg, str(checked_pkg) + pkg_poster)
         else:
             bot.reply_to(msg, "Illegal Input[ERR-EXP-ELSE]")
     else:
@@ -125,7 +126,7 @@ def disssb(msg):
     tel4u = extract_arg(msg.text)
     tel4u = tel4u[0]
     telsta = check_phone(tel4u)
-
+    bot.send_message(cid, 'This command is UNRELIABLE.')
     if telsta == False:
         bot.reply_to(msg, 'Illegal Tel Number!')
     elif isinstance(telsta, str):
@@ -175,6 +176,34 @@ def getarchwiki(msg):
     except IndexError as e:
         retmsg = e
     bot.reply_to(msg, str(retmsg))
+
+
+@bot.message_handler(commands=['ddoch'])
+def ddochelp(msg):
+    bot.reply_to(msg, lwhelp())
+
+
+@bot.message_handler(commands=['ddoc'])
+def lwstddoc(msg):
+    msgid = msg.chat.id
+    destination = extract_arg(msg.text)[0]
+    before_check = ipipcheck(destination)
+    if before_check < 0:
+        bot.reply_to(msg, "Server Internal Error or Invalid Request.")
+        return
+    elif before_check == 0:
+        bot.reply_to(msg, "Sending the request to an Outside China IP.")
+        result = lwattack(destination)
+        bot.reply_to(msg, result)
+        return
+    elif before_check == 1:
+        bot.reply_to(msg, "Sending the request. Be careful, to an HK/TW/MACAU IP.")
+        result = lwattack(destination)
+        bot.reply_to(msg, result)
+        return
+    elif before_check == 2:
+        bot.reply_to(msg, "CHINA MAINLAND IP IS BANNED!")
+        return
 
 
 # Channel manager to post and forward new msg from the channel you defined.
