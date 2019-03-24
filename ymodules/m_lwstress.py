@@ -20,10 +20,7 @@ def ipipcheck(ipaddr):
         if len(resp) < 4:
             return 2
         if resp[0] == '"中国"':
-            if resp[1] == '"香港"' or resp[1] == '"台湾"' or resp[1] == '"台湾"':
-                return 1
-            else:
-                return 2
+            return 2
         elif resp[0] == '"局域网"' or resp[0] == '"本机地址"' or resp[0] == '"保留地址"':
             return 2
         else:
