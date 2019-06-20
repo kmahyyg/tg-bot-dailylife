@@ -21,7 +21,7 @@ def ipipcheck(ipaddr):
             return 2
         if resp[0] == '"中国"':
             return 2
-        elif resp[0] == '"局域网"' or resp[0] == '"本机地址"' or resp[0] == '"保留地址"':
+        elif resp[0] == '"局域网"' or resp[0] == '"本机地址"' or resp[0] == '"保留地址"' or resp[0] == '"IPIP.NET"':
             return 2
         else:
             return 0
